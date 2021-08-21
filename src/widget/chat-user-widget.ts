@@ -1,0 +1,67 @@
+
+import { chatUserTemplate } from './assets';
+import { IChat } from '../models/chat.model';
+
+
+export class ChatUserWidgetElement extends HTMLElement {
+  private domInitialized = false;
+
+  private chat: IChat;
+  private messageContainer: HTMLElement
+
+  /**
+   * Returns attributes to be used 
+   */
+  static get observedAttributes() {
+    return [''];
+  }
+
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(chatUserTemplate.content.cloneNode(true));
+
+    // get the message element and append message
+    this.messageContainer = this.shadowRoot.querySelector("p");
+    // append animation to chat
+    // this.shadowRoot.querySelector(".chat-bot-message-container").classList.add("popup-chat");
+
+  }
+
+  connectedCallback() {
+    if (this.domInitialized) {
+      return;
+    }
+    this.domInitialized = true;
+
+    const applyFocusVisiblePolyfill =
+      (window as any).applyFocusVisiblePolyfill as (scope: Document | ShadowRoot) => void;
+    if (applyFocusVisiblePolyfill != null) {
+      applyFocusVisiblePolyfill(this.shadowRoot);
+    }
+
+
+    // Add Listeners if there are any
+    // this.message = JSON.parse(this.getAttribute("data"));
+    this.chat = JSON.parse(this.getAttribute("chat"));
+    this.messageContainer.innerHTML = this.chat.text;
+
+  }
+
+  attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
+    if (!this.hasAttribute(name)) {
+      newValue = null;
+    }
+
+    this.setOrRemoveAttribute(name, newValue);
+  }
+
+  protected setOrRemoveAttribute(name: string, value: string) {
+    if (value == null) {
+      this.removeAttribute(name);
+    } else {
+      this.setAttribute(name, value);
+    }
+  }
+}

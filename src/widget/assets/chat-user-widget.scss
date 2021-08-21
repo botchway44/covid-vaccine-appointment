@@ -1,0 +1,46 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.chat-user-message-container {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.chat-user-message-container img {
+  display: none;
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  border-radius: 50%;
+  background-color: white;
+
+  // disable shrinking
+  flex-shrink : 0;
+}
+
+.chat-user-message-container p {
+  min-width: fit-content;
+  background-color: #92db8e;
+
+  font-size: 14px;
+  color: #000000b3;
+
+  margin: 0px;
+  padding: 10px;
+
+  border-radius: 20px 20px 0px 20px;
+  /* inset | offset-x | offset-y | color */
+  /* box-shadow: 0.5px 0.5px 20px rgb(0 0 0 / 25%); */
+
+  line-height: 1.75;
+}
