@@ -40,7 +40,7 @@
     "serve:widget": "rollup -c --watch --plugin dev",
     "serve:static": "harp . --port $PORT",
     "start:dev": "nodemon",
-    "start": "rollup -c --watch --plugin dev",
+    "start": "node server/app/app.js",
     "build:doc": "wca src/widget/index.ts --outFiles doc/{tagname}.md"
   },
   "devDependencies": {
