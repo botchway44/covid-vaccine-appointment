@@ -1,6 +1,6 @@
 
 import { chatBotTemplate } from './assets';
-import { IChat } from '..//models/chat.model';
+import { IChat } from '../models/chat.model';
 
 
 export class ChatBotWidgetElement extends HTMLElement {
