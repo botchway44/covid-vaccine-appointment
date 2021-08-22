@@ -1,8 +1,8 @@
 
-
 export type CHAT_TEXT_TYPE = 'TEXT'
 export type CHAT_CHIPS = "CHIPS";
-export type CHAT_MESSAGE_TYPE = CHAT_CHIPS | "TEXT" | "IMAGE" | "RICHCHIPS" | "LOCATION_PICKER" | "LOCATION_PICKER_BRANCH" | "LOCATION_PICKER_ATM" | "LIST";
+export type CHAT_MESSAGE_TYPE = CHAT_CHIPS | "TEXT" | "IMAGE" | "RICHCHIPS" | "LOCATION_PICKER" | "LOCATION_PICKER_BRANCH" | "LOCATION_PICKER_ATM" | "LIST" | "MENU_LIST" | "MENU_CHIPS";
+export type REQUEST_TYPE = "LOCATION" | "TEXT";
 
 
 export type CHAT_USER = "USER";
@@ -10,7 +10,7 @@ export type CHAT_BOT = "BOT";
 
 
 // TODO : Fix this
-export type CHAT_TYPE = CHAT_USER | CHAT_BOT | CHAT_CHIPS | "IMAGE" | "RICHCHIPS" | "LIST" | "LOCATION_PICKER" | "LOCATION_PICKER_BRANCH" | "LOCATION_PICKER_ATM";
+export type CHAT_TYPE = CHAT_USER | CHAT_BOT | CHAT_CHIPS | "IMAGE" | "RICHCHIPS" | "LIST" | "LOCATION_PICKER" | "LOCATION_PICKER_BRANCH" | "LOCATION_PICKER_ATM" | "MENU_LIST" | "MENU_CHIPS";
 
 
 export type CHAT_CLOSED = false;
@@ -35,7 +35,11 @@ export class Chip implements MessageItem {
   ) { }
 }
 
-
+export interface LocationPicker{
+  locationType : string;
+  messageType?: CHAT_MESSAGE_TYPE
+  chatType?: CHAT_TYPE
+}
 export interface IList {
 
 }
@@ -131,10 +135,11 @@ export class ListItem implements MessageItem {
     public heading: string,
     public subheading: string,
     public url: string,
-    public latitude?: string,
-    public longitude?: string
-  ) { }
+    public imageUrl? : string
+    ) { }
 
+  latitude?: string
+  longitude?: string
 }
 
 export class ListMessage implements IChat {
@@ -152,45 +157,3 @@ export class ListMessage implements IChat {
   public id: string;
 }
 
-
-// HANDLES INTENT REQUEST & LOCATION PICKER
-export type REQUEST_TYPE = "LOCATION" | "TEXT";
-
-export interface LOCATION_REQUEST {
-  latitude: number;
-  longitude: number;
-  query: string;
-  intentQuery: string;
-}
-export interface IIntentRequest {
-  projectId: string;
-  location: string;
-  agentId: string;
-  query: string | LOCATION_REQUEST;
-  languageCode: string;
-  sessionId: string;
-
-  channel: string;
-
-  requestType?: REQUEST_TYPE;
-}
-
-export class IntentRequest implements IIntentRequest {
-
-  constructor(
-    public projectId: string,
-    public location: string,
-    public agentId: string,
-    public languageCode: string,
-    public sessionId: string,
-    public query: string | LOCATION_REQUEST,
-
-  ) {
-
-
-  }
-
-  requestType: REQUEST_TYPE = "TEXT";
-  channel: string = "WEB"//WEB
-
-}

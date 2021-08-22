@@ -1,6 +1,7 @@
 
 import { chatFrameTemplate } from './assets';
-import { Chat, IChat, IntentRequest, LOCATION_REQUEST } from '../models/chat.model';
+import { Chat, IChat } from '../models/chat.model';
+import {  IntentRequest,LOCATION_REQUEST  } from '../models/IntentRequest';
 
 
 

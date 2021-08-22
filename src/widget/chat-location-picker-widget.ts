@@ -1,7 +1,8 @@
 
 import { chatLocationPickerTemplate } from './assets';
 import { MapsApi } from './helper/maps-api';
-import { IChat, IMedia, LOCATION_REQUEST } from '../models/chat.model';
+import { IChat, IMedia,  } from '../models/chat.model';
+import { LOCATION_REQUEST } from '../models/IntentRequest';
 
 export class ChatLocationPickerWidgetElement extends HTMLElement {
   private domInitialized = false;

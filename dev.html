@@ -23,17 +23,17 @@
 
 
  
-  <dialogflow-chat-widget agent-id="42273d66-29a4-43bc-88e0-616ed050b31a" chat-title="Chat Assistant"
-    agent-url="http://localhost:7890/channels/web">
+  <dialogflow-chat-widget chat-title="Chat Assistant"
+  agent-id="4883adeb-8d80-4383-8c3f-db6308741731"  
+  agent-url="/channels/web">
   </dialogflow-chat-widget>
 
 
- 
   <script>
     window.addEventListener('DOMContentLoaded', function () {
 
       document.querySelector(".back").addEventListener("click", (_event) => {
-        document.body.style.background = `url("/assets/images/signin-bg.jpg") center center repeat`
+        document.body.style.background = `url("./assets/images/signin-bg.jpg") center center repeat`
         document.body.style.backgroundColor = "white"
       });
 
@@ -79,7 +79,7 @@
       width: 100%;
       height: 100vh;
 
-      background: url("/assets/images/signin-bg.jpg") center center repeat;
+      background: url("./assets/images/signin-bg.jpg") center center repeat;
 
       display: flex;
       justify-content: center;
