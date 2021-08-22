@@ -8,24 +8,22 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "allowUnreachableCode": false,
+    "emitDeclarationOnly": true,
+    "declarationDir": "../dist/esm",
     "pretty": true,
     "skipLibCheck": true,
     "target": "esnext",
     "module": "es6",
     "moduleResolution": "node",
-    "allowJs": true,
     "types": [
       "google.maps",
       "node"
     ]
   },
   "include": [
-    "src/**/*"
+    "../src/widget/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "**/node_modules/*",
-    "dist",
-    "test"
+    "node_modules"
   ]
 }
