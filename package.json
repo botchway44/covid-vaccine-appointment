@@ -20,11 +20,10 @@
     "web-components",
     "webcomponents"
   ],
-
   "scripts": {
     "prebuild": "rm -rf dist server",
     "build:server": "tsc --build config/tsconfig.server.json",
-    "build:widget": "rollup -c && tsc  --build config/tsconfig.json -d",
+    "build:widget": "rollup -c && tsc  --build config/tsconfig.widget.json -d",
     "build": "npm run build:server && npm run build:widget",
     "serve:widget": "rollup -c --watch --plugin dev",
     "serve:static": "harp . --port $PORT",
@@ -76,6 +75,7 @@
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "harp": "*",
-    "mongodb": "^3.1.12"
+    "mongodb": "^3.1.12",
+    "moment": "^2.29.1"
   }
 }

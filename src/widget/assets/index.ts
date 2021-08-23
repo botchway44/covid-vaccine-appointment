@@ -52,7 +52,7 @@ chatFrameTemplate.innerHTML = `
           </div>
 
           <!-- <chat-loader-widget class="chat-loading"></chat-loader-widget> -->
-          <div style="margin-left:20px" class="chat-loading dot-elastic"></div>
+          <div style="margin-left:20px" class="chat-loading dot-pulse"></div>
           <div  class="trick-to-scroll-here"></div>
 
         </section>
