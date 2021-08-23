@@ -1,16 +1,16 @@
 {
-  "name": "dialogflow-chat-widget",
+  "name": "dialogflowcx-chat-widget",
   "description": "A web chat widget web component that interacts with a dialogflow interactions api to detect intents",
   "version": "0.0.1",
   "author": "Emmanuel Asamoah Botwe",
-  "license": "BSD-2-Clause",
-  "homepage": "https://github.com/botchway44/dialogflow-chat-widget#readme",
+  "license": "Apache License",
+  "homepage": "https://github.com/botchway44/covid-vaccine-appointment#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/botchway44/dialogflow-chat-widget.git"
+    "url": "https://github.com/botchway44/covid-vaccine-appointment.git"
   },
   "bugs": {
-    "url": "https://github.com/botchway44/dialogflow-chat-widget/issues"
+    "url": "https://github.com/botchway44/covid-vaccine-appointment/issues"
   },
   "keywords": [
     "chat",
@@ -24,8 +24,8 @@
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
-  "jsdelivr": "dist/dialogflow-chat-widget.js",
-  "unpkg": "dist/dialogflow-chat-widget.min.js",
+  "jsdelivr": "dist/dialogflowcx-chat-widget.js",
+  "unpkg": "dist/dialogflowcx-chat-widget.min.js",
   "files": [
     "dist/**/*",
     "README.md",

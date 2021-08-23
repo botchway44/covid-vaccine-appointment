@@ -23,7 +23,8 @@ window.customElements.define('chat-loader-widget', ChatLoaderWidgetElement);
 window.customElements.define('chat-image-widget', ChatImageWidgetElement);
 window.customElements.define('chat-chips-widget', ChatChipsWidgetElement);
 window.customElements.define('chat-input-widget', ChatInputWidgetElement);
-window.customElements.define('dialogflow-chat-widget', ChatWidgetElement);
 window.customElements.define('chat-list-widget', ChatListWidgetElement);
 window.customElements.define('chat-user-widget', ChatUserWidgetElement);
 window.customElements.define('chat-bot-widget', ChatBotWidgetElement);
+
+window.customElements.define('dialogflowcx-chat-widget', ChatWidgetElement);

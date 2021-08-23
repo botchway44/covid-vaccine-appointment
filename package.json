@@ -1,21 +1,22 @@
 {
-  "name": "dialogflow-chat-widget",
+  "name": "covid-vaccine-appointment",
   "description": "A web chat widget web component that interacts with a dialogflow interactions api to detect intents",
   "version": "0.0.1",
   "author": "Emmanuel Asamoah Botwe",
-  "license": "BSD-2-Clause",
-  "homepage": "https://github.com/botchway44/dialogflow-chat-widget#readme",
+  "license": "Apache License",
+  "homepage": "https://github.com/botchway44/covid-vaccine-appointment#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/botchway44/dialogflow-chat-widget.git"
+    "url": "https://github.com/botchway44/covid-vaccine-appointment"
   },
   "bugs": {
-    "url": "https://github.com/botchway44/dialogflow-chat-widget/issues"
+    "url": "https://github.com/botchway44/covid-vaccine-appointment/issues"
   },
   "keywords": [
     "chat",
     "chat-widget",
     "dialogflow",
+    "dialogflow cx",
     "interations-api",
     "web-components",
     "webcomponents"
