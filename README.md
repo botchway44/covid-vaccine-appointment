@@ -18,14 +18,15 @@ The solution here is simple, a simple conversational assistant or chat bot integ
 
 ## ⚙️ Getting Started
 
-This project is configured to run both the [chat widget](https://github.com/botchway44/covid-vaccine-appointment/tree/main/src/widget) and an [express application](https://github.com/botchway44/covid-vaccine-appointment/tree/main/src/app) together. It bundles the chat widget into a single js file in the [dist]()
+This project is configured to run both the [chat widget](https://github.com/botchway44/covid-vaccine-appointment/tree/main/src/widget) and an [express application](https://github.com/botchway44/covid-vaccine-appointment/tree/main/src/app) together. It bundles the chat widget into a single js file in the [dist folder]()
 
-* **[assets]()** -Contains static shared assets like images, fonts & svgs for the projects
-* **[cx-model]()** The exported dialogflow-cx agent
+* **[assets](https://github.com/botchway44/covid-vaccine-appointment/tree/main/assets)** - Contains static shared assets like images, fonts & svgs for the projects
+* **[cx-model](https://github.com/botchway44/covid-vaccine-appointment/tree/main/cx-model)** The exported dialogflow-cx agent
 * **[src/app](https://github.com/botchway44/covid-vaccine-appointment/tree/main/src/app)** - Nodesjs server for detecting intents and handling fulfillments
 * **[src/widget](https://github.com/botchway44/covid-vaccine-appointment/tree/main/src/widget)** - Web component written in typescript and uses rollup to bundle into minifies js files with `npm run build:widget` command. 
 * **[src/model](https://github.com/botchway44/covid-vaccine-appointment/tree/main/src/models)** - Contains the shared model for the project
-A few resources to get you started if this is your first Flutter project:
+
+For a detailed instruction on running this project locally, [click here](https://github.com/botchway44/covid-vaccine-appointment/blob/main/PROJECT.md#%EF%B8%8F-getting-started)
 
 
 <!-- ## :bulb: Motivation and Context
@@ -44,6 +45,9 @@ Dialogflow CX Competition -->
 | 3 | 4|
 |------|-------|
 |<img src="assets/images/s3.PNG" width="400">|<img src="assets/images/s4.PNG" width="400">|
+
+A few resources to get you started if this is your first time working with Dialogflow CX:
+* [Dialogflow CX Console overview](https://cloud.google.com/dialogflow/cx/docs/concept/console)
 
 Design shall set conversations free ❤ !!
 
