@@ -62,7 +62,6 @@ export default [
 
     ],
     external: [
-      // "@googlemaps/js-api-loader",
       'tslib'
     ]
   },
@@ -71,11 +70,11 @@ export default [
     input: 'src/widget/index.ts',
     output: [
       {
-        file: 'dist/dialogflow-chat-widget.js',
+        file: 'dist/dialogflowcx-chat-widget.js',
         ...umdOutOptions,
       },
       {
-        file: 'dist/dialogflow-chat-widget.min.js',
+        file: 'dist/dialogflowcx-chat-widget.min.js',
         sourcemap: true,
         ...umdOutOptions,
         plugins: [
