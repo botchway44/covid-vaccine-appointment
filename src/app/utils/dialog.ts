@@ -4,4 +4,7 @@ export class Dialog {
 
 
 
+    verifyEmail(email: string){
+        
+    }
 }
