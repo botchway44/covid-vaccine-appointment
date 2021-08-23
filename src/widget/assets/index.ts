@@ -20,7 +20,8 @@ import chatListWidgetCSS from './chat-list-widget.scss';
 import chatRichChipsWidgetCSS from './chat-rich-chips-widget.scss';
 import chatImageWidgetCSS from './chat-image-widget.scss';
 import chatLocationPickerWidgetCSS from './chat-location-picker-widget.scss';
-
+import chatMenuChipsWidgetCSS from './chat-menu-chips-widget.scss';
+import chatMenuListWidgetCSS from './chat-menu-list-widget.scss';
 
 export const chatFrameTemplate = document.createElement('template');
 chatFrameTemplate.innerHTML = `
@@ -71,7 +72,7 @@ chatFrameTemplate.innerHTML = `
         <button class="chat-toggle-btn" 
           aria-label="chat toggle icon">
           
-          <span class="logo">
+          <span style="height:60px; width:60px" class="logo">
            
           </span>
 
@@ -201,6 +202,43 @@ chatInputTemplate.innerHTML = `
   </section>
 
 
+  `;
+
+  
+  export const chatMenuChipsTemplate = document.createElement('template');
+  chatMenuChipsTemplate.innerHTML = `
+
+  <style>
+  ${globalStyles}
+  </style>
+  <style>
+  ${chatMenuChipsWidgetCSS}
+  </style>
+
+  <section class="chat-widget-chip-container">
+
+  </section>
+  `;
+
+  
+export const chatMenuListTemplate = document.createElement('template');
+chatMenuListTemplate.innerHTML = `
+
+  <style>
+     ${globalStyles}
+  </style>
+  <style>
+    ${chatMenuListWidgetCSS}
+  </style>
+
+
+  <section class="chat-widget-list-container">
+ 
+    <ol  style="margin: 5px 5px 5px 50px; cursor : pointer" class="list-group list-group-numbered">
+      
+    </ol>
+
+  </section>
   `;
 
 export const chatChipsTemplate = document.createElement('template');
