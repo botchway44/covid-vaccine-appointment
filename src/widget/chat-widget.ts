@@ -368,6 +368,18 @@ export class ChatWidgetElement extends HTMLElement {
 
       this.chatListFrame.appendChild(element);
     }
+    else if (chat.messageType === "MENU_CHIPS") {
+      const element = document.createElement("chat-menu-chips-widget");
+      element.setAttribute("chat", JSON.stringify(chat))
+  
+      this.chatListFrame.appendChild(element);
+    } 
+    else if (chat.messageType === "MENU_LIST") {
+      // <chat-list-widget></chat-list-widget>
+      const element = document.createElement("chat-menu-list-widget");
+      element.setAttribute("chat", JSON.stringify(chat))
+      this.chatListFrame.appendChild(element);
+    }
     else if (chat.messageType === "LIST") {
       // <chat-list-widget></chat-list-widget>
       const element = document.createElement("chat-list-widget");
