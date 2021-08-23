@@ -30,8 +30,15 @@ Dialogflow CX Competition
 Design shall set conversations free ❤ !!
 
 ## 📸 Screenshots
-<!-- You can add more screenshots here if you like -->
-<img src="/results/Screenshot_1.png" width="260">&emsp;<img src="/results/Screenshot_2.png" width="260">
+<img src="assets/images/ss.PNG"/>
+
+| 1 | 2|
+|------|-------|
+|<img src="assets/images/s1.PNG" width="400">|<img src="assets/images/s2.PNG" width="400">|
+
+| 3 | 4|
+|------|-------|
+|<img src="assets/images/s3.PNG" width="400">|<img src="assets/images/s4.PNG" width="400">|
 
 ## Getting Started
 
