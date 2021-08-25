@@ -6,5 +6,5 @@
     "ignore": [
         "src/**/*.spec.ts"
     ],
-    "exec": "npm run build && node server/app/app.js"
+    "exec": "npm run build:widget && ts-node src/app/app.ts"
 }
