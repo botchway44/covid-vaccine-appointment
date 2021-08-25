@@ -42,13 +42,16 @@ const payload =
 };
 
 
-server.post('/api/messages', (req :any , res : any) => {
+server.post('/api/messages', async (req :any , res : any) => {
 
     console.log("------------------------------------------------------------------------")
     console.log("BODY :::",req.body)
     console.log("------------------------------------------------------------------------")
     let tag = req.body.fulfillmentInfo.tag;
     console.log("TAG:::",tag)
+    console.log("------------------------------------------------------------------------")
+    let sessionId = req.body.sessionInfo.parameters.sessionId;
+    console.log("sessionId:::",sessionId)
     console.log("------------------------------------------------------------------------")
 
     if(tag){
@@ -91,6 +94,22 @@ server.post('/api/messages', (req :any , res : any) => {
                             }
                           
                 });
+        }
+        else if(tag  === "getstarted"){
+          const res = await  dialog.getStarted(sessionId);
+
+          if(res){
+            // Welcome message, session created
+          }else{
+            // Welcome Message, but couldnt create session
+          }
+        }
+        else if(tag ==="check_appointment"){
+            // if we have an email and is veried, show appointment details
+
+            // if we no email, ask for email
+
+            // if we have email but not veried, verify email
         }
  
     }else{

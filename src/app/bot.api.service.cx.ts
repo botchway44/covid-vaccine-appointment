@@ -4,6 +4,7 @@ require('dotenv').config();
 // Imports the Google Cloud Some API library
 // const { SessionsClient } = require('@google-cloud/dialogflow-cx');
 import { SessionsClient } from "@google-cloud/dialogflow-cx/build/src/v3/sessions_client";
+const {struct} = require('pb-util');
 
 export class BotApiServiceCx {
 
@@ -49,6 +50,11 @@ export class BotApiServiceCx {
                 },
                 languageCode: intentRequest?.languageCode
             },
+            queryParams:{
+                parameters:struct.encode({
+                    sessionId : intentRequest.sessionId
+                })
+            }
         };
 
         // console.log("Session Response ", request);

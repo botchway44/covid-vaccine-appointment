@@ -21,6 +21,15 @@ export class Dialog {
         var val = Math.floor(1000 + Math.random() * 9000);
         console.log(val);
         const session = new Session(id,false, val+"")
+       const res = await this.mongoClient.addSession(session);
+
+       if(res?.result?.ok){
+          return true;
+       }
+
+       return false;
      }
     }
+
+
 }

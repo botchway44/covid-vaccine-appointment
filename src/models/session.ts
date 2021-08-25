@@ -1,7 +1,8 @@
 export interface ISession{
     id : string,
     verified : boolean,
-    code : string
+    code : string,
+    email?:string
 }
 
 
