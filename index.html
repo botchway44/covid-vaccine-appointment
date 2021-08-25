@@ -5,10 +5,13 @@
   <meta charset="utf-8" />
   <meta charset="UTF-8">
 
-  <title>DialogFlow Chat widget</title>
+  <title>COVID vaccination appointment</title>
+  <meta name="description" content="A conversational bot allowing users to book covid vaccine shots appointment at health sectors around them at their own convenience.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +27,7 @@
 
   <script src="/dist/dialogflowcx-chat-widget.min.js"></script>
 
-  <dialogflowcx-chat-widget chat-title="Nana Adwoa"
+  <dialogflowcx-chat-widget chat-title="Vaccine Appointments"
   agent-id="4883adeb-8d80-4383-8c3f-db6308741731"  
   agent-url="/channels/web">
   </dialogflowcx-chat-widget>
@@ -72,6 +75,9 @@
       border-radius: 5px;
 
       cursor: pointer;
+
+      font-family: 'Roboto Slab', serif;
+      font-size: 16px;
     }
 
     body {

@@ -11,6 +11,7 @@
   align-items: flex-start;
 
   margin-bottom: 10px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .chat-bot-message-container div {
@@ -26,24 +27,23 @@
 
   border-radius: 50%;
 
-  box-sizing : border-box;
-  background-color: #2C394B;
-
+  box-sizing: border-box;
+  background-color: #2c394b;
 
   // disable flex sheink
-  flex-shrink : 0;
+  flex-shrink: 0;
 }
 
 .chat-bot-message-container p {
   background-color: #fff;
 
   font-size: 14px;
-  color: #000000b3;
+  color: #082032;
 
   margin: 0px;
   padding: 10px;
 
   border-radius: 0px 20px 20px 20px;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  line-height : 1.75;
+  line-height: 1.75;
 }

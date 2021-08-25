@@ -10,6 +10,7 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .chat-user-message-container img {
@@ -25,7 +26,7 @@
   background-color: white;
 
   // disable shrinking
-  flex-shrink : 0;
+  flex-shrink: 0;
 }
 
 .chat-user-message-container p {
@@ -33,7 +34,7 @@
   background-color: #92db8e;
 
   font-size: 14px;
-  color: #000000b3;
+  color: #082032;
 
   margin: 0px;
   padding: 10px;

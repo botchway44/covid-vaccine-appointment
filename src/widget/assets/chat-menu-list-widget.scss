@@ -14,7 +14,7 @@
   // margin-bottom: 20px;
   // margin-left : 50px;
 
-  /* background-color: rebeccapurple; */
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 .chat-widget-message-container img {
@@ -34,10 +34,10 @@
   background-color: white;
 
   font-size: 14px;
-  color: #3c4b6c;
+  color: #082032;
 
   display: flex;
-  align-items:center;
+  align-items: center;
   margin: 5px 5px 5px 55px;
   padding: 10px;
   box-sizing: border-box;
@@ -48,9 +48,9 @@
   cursor: pointer;
 }
 
-.chat-widget-list-container section .info h5 ,
-.chat-widget-list-container section  address {
-margin: 0;
+.chat-widget-list-container section .info h5,
+.chat-widget-list-container section address {
+  margin: 0;
 }
 .chat-widget-list-container section .info .heading {
   margin-bottom: 5px;
@@ -62,17 +62,15 @@ margin: 0;
   margin: 0;
 }
 
-
-.chat-widget-list-container section .info{
-flex : 1;
+.chat-widget-list-container section .info {
+  flex: 1;
 }
-.chat-widget-list-container section  svg{
-  width : 25px;
+.chat-widget-list-container section svg {
+  width: 25px;
   height: 25px;
-  color: #1e2d1d;
+  color: #082032;
 }
 
-#list-group .list-group-item:hover{
-background-color: #ee3;
-
+#list-group .list-group-item:hover {
+  background-color: #ee3;
 }

@@ -462,11 +462,11 @@ export class ChatWidgetElement extends HTMLElement {
         myRequest
       );
 
+      this.hideChatLoader();
 
       //TODO :  Handle responses well
       if (!response.ok) {
         // falied
-        this.hideChatLoader();
         this.addChat(new Chat("I had a problem getting results, please try again", this.sessionId, "BOT"));
       }
 
