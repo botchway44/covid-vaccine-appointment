@@ -8,7 +8,7 @@ A conversational bot(Nana Adwoa) allowing users to book days with available slot
 
 ## 💡 Motivation and Context
 <!--- Describe your app in one or two sentences -->
-COVID-19 infections are increasing in Ghana, with 420 new infections reported on average each day. That's 54% of the peak — the highest daily average reported on July 28. During the last week reported, Ghana averaged about 719 doses administered each day. At that rate, it will take a further 8,460 days to administer enough doses for another 10% of the population.
+COVID-19 infections are increasing in Ghana, with 420 new infections reported on average each day. That's 54% of the peak — the highest daily average reported on July 28. During the last week reported, Ghana averaged about 719 doses administered each day. At that rate, it will take a further 8,460 days to administer enough doses for another 10% of the population. [Source](https://graphics.reuters.com/world-coronavirus-tracker-and-maps/countries-and-territories/ghana/)
 
 As taking Vaccines is still in progress, most of the population are busy and would find it difficult going to join long queues to take Vaccines Shot. Even though their health is important, the quality of health service they get also depends on the amount of money they make as such the decision of leaving work for the vaccination becomes difficult to make.
 

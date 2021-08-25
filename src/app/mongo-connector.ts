@@ -1,5 +1,6 @@
 import { Collection } from "mongodb";
 import { IAppointment } from "../models/appointment";
+import { ISession } from "../models/session";
 
 const MongoClient = require('mongodb');
 const ObjectID = require('mongodb').ObjectID;
@@ -10,11 +11,15 @@ require("dotenv").config();
  * Todo : Make class generic, separate mongo specific from repository specific operations
  */
 export class MongoClientConnection {
-    public tasks_db_name = 'tasks';
+    public sessions_db_name = 'sessions';
+    public appointments_db_name = 'appointments';
+    public db_name = 'appointment';
+
     appointments_collection?: Collection | undefined;
+    sessions_collection?:Collection | undefined;
+
     mongo_url = process.env.MONGODB_URL;
 
-    db_name = 'LexVoiceApp';
 
     constructor() {
     }
@@ -31,8 +36,9 @@ export class MongoClientConnection {
                 if (err) { reject(err); throw err; };
 
                 // log connected
-                console.log('connected to database');
-                this.appointments_collection = await client.db(this.db_name).collection(this.tasks_db_name);
+                console.log('connecting...');
+                this.appointments_collection = await client.db(this.db_name).collection(this.appointments_db_name);
+                this.sessions_collection = await client.db(this.db_name).collection(this.sessions_db_name);
 
                 resolve(true)
             });
@@ -47,6 +53,10 @@ export class MongoClientConnection {
     }
 
 
+    async addSession(session: ISession) {
+        return await this.sessions_collection?.insertOne(session);
+    }
+
     async removeAppointment(appointment: IAppointment) {
         return await this.appointments_collection?.deleteOne({ id: appointment.id });
     }
@@ -59,14 +69,17 @@ export class MongoClientConnection {
         return this.appointments_collection?.find({ email: email }).toArray() || [];
     }
 
-    find(email: string) {
+    findAppointment(email: string) {
         return this.appointments_collection?.find({email : email}).toArray();
+    }
+
+    findSession(id: string) {
+        return this.appointments_collection?.findOne({id : id});
     }
 
     getAppointment(id: string, email: string) {
         return this.appointments_collection?.findOne({ id: id, email: email });
     }
-
 
     async removeAllAppointments() {
         return await this.appointments_collection?.deleteMany({});
