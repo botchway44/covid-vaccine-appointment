@@ -3,7 +3,6 @@
   height: 70px;
 }
 
- 
 .chat-header-container {
   background-color: #082032;
 
@@ -14,6 +13,7 @@
   align-items: center;
 
   border-radius: 20px 20px 0px 0px;
+  font-family: "Roboto Slab", serif;
 }
 
 .chat-header-container svg {
@@ -27,7 +27,7 @@
   fill: white;
 }
 
-.back-button{
+.back-button {
   width: 40px;
   height: 40px;
   display: flex;
@@ -39,7 +39,7 @@
   cursor: pointer;
 }
 
-.collapse-arrow{
+.collapse-arrow {
   width: 50px;
   height: 50px;
   display: flex;
@@ -51,8 +51,8 @@
   cursor: pointer;
 }
 
-.collapse-arrow svg{
-  margin : 0;
+.collapse-arrow svg {
+  margin: 0;
 }
 .back-button svg {
   width: 10px;
@@ -65,8 +65,9 @@
   fill: white;
 }
 
-.back-button:hover, .collapse-arrow:hover{
-  background-color : rgba(255, 255, 255, 0.219);
+.back-button:hover,
+.collapse-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.219);
 
   border-radius: 50%;
 }
@@ -78,7 +79,6 @@
 }
 
 @media (max-width: 500px) {
-  
 }
 
 .logo {
@@ -91,8 +91,8 @@
   object-position: center;
   margin-right: 10px;
 
-  box-sizing : border-box;
+  box-sizing: border-box;
 
   // disable flex sheink
-  flex-shrink : 0;
+  flex-shrink: 0;
 }
