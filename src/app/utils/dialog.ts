@@ -1,15 +1,27 @@
 import { ISession, Session } from "../../models/session";
+import { MailerService } from "../mailer.service";
 import { MongoClientConnection } from "../mongo-connector";
 
 export class Dialog {
-
-    constructor(
-        public mongoClient: MongoClientConnection
+   
+   constructor(
+      public mongoClient: MongoClientConnection
     ) {
+       
+   }
+   
+   
+  async verify_code(ssid : string,code: string) {
+     const res = await this.mongoClient.findSession(ssid) as ISession;
+      
+     if(res && (res.code+"" === code+"")){
+         // update session as verified
+         res.verified = true;
+         return true;
+     }
 
-    }
-
-
+     return false
+  }
 
    async getStarted(id: string){
      const session =  await  this.mongoClient.findSession(id);
@@ -44,6 +56,7 @@ export class Dialog {
 
       if(updated?.result?.ok){
          // send verification
+         MailerService.sendEmail(email, res.code);
       }
       else{
          // update failed

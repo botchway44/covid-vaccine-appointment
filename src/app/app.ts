@@ -55,8 +55,68 @@ server.post('/api/messages', async (req :any , res : any) => {
     console.log("------------------------------------------------------------------------")
 
     if(tag){
+        if(tag ==="verify_code"){
+            // get code
+            let code = req.body.sessionInfo.parameters.code;
+            
+            // verify code
+            const result = dialog.verify_code(sessionId,code);
+            if(result){
+            // send verified payload
+            console.log("Verification DONE");
+            res.status(200).send({
+                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/188f9011-8a45-43ae-9c94-09c088632d6b",
+                pageInfo:{
+                        formInfo : { 
+                            parameterInfo :  [
+                                {
+                                    displayName: 'code',
+                                    required: true,
+                                    state: 'FILLED',
+                                    value: req.body.sessionInfo.parameters.code,
+                                    justCollected: true
+                                  },
+                             ]
+                             },
+                        sessionInfo: {
+                            parameters: {                         
+                                ...req.body.sessionInfo.parameters,
+                                verified : "true"
+                            }
+                        }
+                        
+                },   
+            });
+        }
+        else{
+            // send Unverified
+            console.log("Verification Failed");
+            res.status(200).send({
+                pageInfo:{
+                        formInfo : { 
+                            parameterInfo :  [
+                                {
+                                    displayName: 'code',
+                                    required: true,
+                                    state: 'FILLED',
+                                    value: req.body.sessionInfo.parameters.code,
+                                    justCollected: true
+                                  },
+                             ]
+                             },
+                        sessionInfo: {
+                            parameters: {                         
+                                ...req.body.sessionInfo.parameters,
+                                verified : "false"
+                            }
+                        }
+                        
+                },   
+            });
+        }
+        }
         //Reset the form to collect new input 
-        if(tag ==="reset_appointment_form"){
+        else if(tag ==="reset_appointment_form"){
             res.status(200).send({
                 pageInfo:{
                         formInfo : { 
@@ -72,10 +132,10 @@ server.post('/api/messages', async (req :any , res : any) => {
                              ]
                              },
                         sessionInfo: {
-                        parameters: {                         
-                            email: "",
-                            verified : "false"
-                        }
+                            parameters: {                         
+                                email: "",
+                                verified : "false"
+                            }
                         }
                         
                     },
@@ -87,10 +147,10 @@ server.post('/api/messages', async (req :any , res : any) => {
                 // get email
                 const email = req.body.sessionInfo.parameters.email;
                 const pageInfo = req.body.pageInfo.formInfo.parameterInfo;
-                // set as verified
 
-                console.log("Page info ", pageInfo)
-                // return results
+                // get session and send 4 digit code
+                
+                dialog.verify_email( sessionId,email);
 
                 res.status(200).send({
                     
@@ -105,7 +165,7 @@ server.post('/api/messages', async (req :any , res : any) => {
                                         value: email,
                                         justCollected: true
                                       },
-                                    { displayName: 'verified', state: 'FILLED', value: 'true' }
+                                    { displayName: 'verified', state: 'FILLED', value: 'false' }
                                  ]
                         }
                         },
@@ -113,7 +173,7 @@ server.post('/api/messages', async (req :any , res : any) => {
                         session:req.body.sessionInfo.session,
                         parameters: {                         
                             email: email,
-                            verified : "true"
+                            verified : "false"
                         }
                         }
                           
@@ -133,7 +193,7 @@ server.post('/api/messages', async (req :any , res : any) => {
            const email =req.body.sessionInfo?.parameters?.email;
            if(!email){
           const payload =   {
-                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/f374df86-41ac-4af4-b23f-eb70693947e1",
+                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/188f9011-8a45-43ae-9c94-09c088632d6b",
                 fulfillment_response: { 
                     messages: [
                         {
@@ -153,28 +213,27 @@ server.post('/api/messages', async (req :any , res : any) => {
  
     }else{
         // process no tags
-  
-  // get session info and resend 
-  const session_info = req.body.sessionInfo;
- //const parameters = req.body.
-  let jsonResponse = {
-      fulfillment_response: {
-          messages: [
-              {
-                  payload: payload
-              },
-              {
-                  text: {
-                      //fulfillment text response to be sent to the agent
-                      text: ["Hi! This is a webhook response"]
-                  }
-              }
-          ]
-      },
-      sessionInfo: {
-          user_id: "john Doe"
-      }
-  };
+            // get session info and resend 
+            const session_info = req.body.sessionInfo;
+            //const parameters = req.body.
+            let jsonResponse = {
+                fulfillment_response: {
+                    messages: [
+                        {
+                            payload: payload
+                        },
+                        {
+                            text: {
+                                //fulfillment text response to be sent to the agent
+                                text: ["Hi! This is a webhook response"]
+                            }
+                        }
+                    ]
+                },
+                sessionInfo: {
+                    user_id: "john Doe"
+                }
+            };
 
 
       res.status(200).json(jsonResponse);
@@ -205,14 +264,7 @@ server.post('/channels/web', async (req: any, res: any) => {
 
   }
 
-
-  // verify if session id is passed
-  // detect the intent
-
-//   console.log("intent response ", responseMessages?.queryResult);
-
   res.status(200).json(parseChat(responseMessages?.queryResult?.responseMessages));
-  // res.status(200).json(responseMessages.queryResult);
 });
 
 
