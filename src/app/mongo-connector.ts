@@ -77,6 +77,9 @@ export class MongoClientConnection {
         return this.appointments_collection?.findOne({id : id});
     }
 
+    updateSession(id: string, session : ISession) {
+        return this.appointments_collection?.updateOne({id : id}, session );
+    }
     getAppointment(id: string, email: string) {
         return this.appointments_collection?.findOne({ id: id, email: email });
     }

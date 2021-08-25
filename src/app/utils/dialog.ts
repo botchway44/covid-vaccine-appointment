@@ -1,4 +1,4 @@
-import { Session } from "../../models/session";
+import { ISession, Session } from "../../models/session";
 import { MongoClientConnection } from "../mongo-connector";
 
 export class Dialog {
@@ -31,5 +31,22 @@ export class Dialog {
      }
     }
 
+   async verify_email(id : string, email: string){
+       const res = await this.mongoClient.findSession(id) as ISession;
 
+       if(res){
+         res.email = email;
+         res.verified = false;  
+       }
+     
+       const updated = await this.mongoClient.updateSession(id, res);
+      // update the session with the id
+
+      if(updated?.result?.ok){
+         // send verification
+      }
+      else{
+         // update failed
+      }
+    }
 }
