@@ -55,19 +55,43 @@ server.post('/api/messages', async (req :any , res : any) => {
     console.log("------------------------------------------------------------------------")
 
     if(tag){
-        if(tag === "appointment.email_booked"){
+        //Reset the form to collect new input 
+        if(tag ==="reset_appointment_form"){
+            res.status(200).send({
+                pageInfo:{
+                        formInfo : { 
+                            parameterInfo :  [
+                                {
+                                    displayName: 'email',
+                                    required: true,
+                                    state: 'EMPTY',
+                                    value: '',
+                                    justCollected: false
+                                  },
+                            { displayName: 'verified', state: 'FILLED', value: 'false' }
+                             ]
+                             },
+                        sessionInfo: {
+                        parameters: {                         
+                            email: "",
+                            verified : "false"
+                        }
+                        }
+                        
+                    },
+                      
+            });
+        }
+        else if(tag === "appointment.verify_email"){
 
                 // get email
                 const email = req.body.sessionInfo.parameters.email;
                 const pageInfo = req.body.pageInfo.formInfo.parameterInfo;
-                const verified = true;
                 // set as verified
-
-                let session_info = req.body.sessionInfo;
 
                 console.log("Page info ", pageInfo)
                 // return results
-                // const results = ;
+
                 res.status(200).send({
                     
                     pageInfo:{
@@ -77,21 +101,21 @@ server.post('/api/messages', async (req :any , res : any) => {
                                     {
                                         displayName: 'email',
                                         required: true,
-                                        state: 'PARAMETER_STATE_UNSPECIFIED',
-                                        value: 'doe@gmail.com',
+                                        state: 'FILLED',
+                                        value: email,
                                         justCollected: true
                                       },
-                                { displayName: 'verified', state: 'FILLED', value: 'true' }
+                                    { displayName: 'verified', state: 'FILLED', value: 'true' }
                                  ]
                         }
                         },
-                        sessionInfo: {
-                            session:req.body.sessionInfo.session,
-                            parameters: {                         
-                                email: "botwe@gmail.com",
-                                verified : "true"
-                            }
-                            }
+                    sessionInfo: {
+                        session:req.body.sessionInfo.session,
+                        parameters: {                         
+                            email: email,
+                            verified : "true"
+                        }
+                        }
                           
                 });
         }
@@ -106,7 +130,22 @@ server.post('/api/messages', async (req :any , res : any) => {
         }
         else if(tag ==="check_appointment"){
             // if we have an email and is veried, show appointment details
-
+           const email =req.body.sessionInfo?.parameters?.email;
+           if(!email){
+          const payload =   {
+                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/f374df86-41ac-4af4-b23f-eb70693947e1",
+                fulfillment_response: { 
+                    messages: [
+                        {
+                            text: {
+                                //fulfillment text response to be sent to the agent
+                                text: ["Hi! This is a to get email"]
+                            }
+                        }
+                ] 
+                } 
+            }
+           }
             // if we no email, ask for email
 
             // if we have email but not veried, verify email
