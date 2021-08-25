@@ -20,13 +20,6 @@ export class BotApiServiceCx {
     static async detectIntentText(intentRequest: any) {
         // const sessionId =  Math.random().toString(36).substring(7);
 
-        // projectId = 'stanbic-assistant';
-        // location = 'us-central1';
-        // agentId = '42273d66-29a4-43bc-88e0-616ed050b31a';
-        // query = 'hello';
-        // languageCode = 'en';
-        // client: any;
-
         const client = new SessionsClient({
             apiEndpoint: 'us-central1-dialogflow.googleapis.com',
             projectId : process.env.DF_PROJECT_ID,
@@ -37,13 +30,6 @@ export class BotApiServiceCx {
             language: "en"
         });
 
-        // new dialogflow.Dialogflow({
-        //     projectId: process.env.DF_PROJECT_ID,
-        //     privateKey: process.env.DF_PRIVATE_KEY,
-        //     clientEmail: process.env.DF_CLIENT_EMAIL,
-        //     language: "en"
-        // });
-
         const sessionPath = client.projectLocationAgentSessionPath(
             intentRequest.projectId,
             intentRequest.location,
@@ -51,10 +37,10 @@ export class BotApiServiceCx {
             intentRequest.sessionId
         );
 
-        console.info("session path ", sessionPath);
+        // console.info("session path ", sessionPath);
 
         const langCode = intentRequest.languageCode;
-        console.log(langCode)
+        // console.log(langCode)
         const request = {
             session: sessionPath,
             queryInput: {
@@ -65,10 +51,10 @@ export class BotApiServiceCx {
             },
         };
 
-        console.log("Session Response ", request);
+        // console.log("Session Response ", request);
 
         const [response] = await client.detectIntent(request);
-        console.log("Query Response ", response);
+        // console.log("Query Response ", JSON.stringify(response));
 
         console.log(`User Query: ${intentRequest?.query}`);
         if(response?.queryResult?.responseMessages){
