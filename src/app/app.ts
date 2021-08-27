@@ -3,6 +3,7 @@ import { BotApiServiceCx } from "./bot.api.service.cx";
 import { MongoClientConnection } from "./mongo-connector";
 import { parseChat } from "./utils/chat.utils";
 import { Dialog } from "./utils/dialog";
+import { Social } from "./utils/social";
 
 const express = require('express');
 const server = express();
@@ -19,27 +20,6 @@ server.use(express.static(path.join(__dirname, "../../.")));
 let mongoClient: MongoClientConnection;
 let dialog: Dialog;
 
-
-const payload =
-{
-
-    "messageType": "CHIPS",
-    "payload": [
-        {
-            "text": "Webhook Balance",
-            "id": 1
-        },
-        {
-            "id": 2,
-            "text": "Webhook Check Fx Rate"
-        },
-        {
-            "id": 3,
-            "text": "Webhook View services"
-        }
-    ]
-
-};
 
 
 server.post('/api/messages', async (req :any , res : any) => {
@@ -60,172 +40,28 @@ server.post('/api/messages', async (req :any , res : any) => {
             let code = req.body.sessionInfo.parameters.code;
             
             // verify code
-            const result = dialog.verify_code(sessionId,code);
-            if(result){
-            // send verified payload
-            console.log("Verification DONE");
-            res.status(200).send({
-                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/188f9011-8a45-43ae-9c94-09c088632d6b",
-                pageInfo:{
-                        formInfo : { 
-                            parameterInfo :  [
-                                {
-                                    displayName: 'code',
-                                    required: true,
-                                    state: 'FILLED',
-                                    value: req.body.sessionInfo.parameters.code,
-                                    justCollected: true
-                                },
-                              { displayName: 'verified', state: 'FILLED', value: 'true' }
-
-                             ]
-                             },
-                        sessionInfo: {
-                            parameters: {                         
-                                ...req.body.sessionInfo.parameters,
-                                verified : "true"
-                            }
-                        }
-                        
-                },   
-            });
-        }
-        else{
-            // send Unverified
-            console.log("Verification Failed");
-                res.status(200).send({
-                   fulfillment_response: { 
-                    messages: [
-                        {
-                            text: {
-                                //fulfillment text response to be sent to the agent
-                                text: ["Verification failed. Please try again"]
-                            }
-                        }
-                ] 
-                }, 
-                pageInfo:{
-                        formInfo : { 
-                            parameterInfo :  [
-                                {
-                                    displayName: 'code',
-                                    required: true,
-                                    state: 'EMPTY',
-                                    value: req.body.sessionInfo.parameters.code,
-                                    justCollected: true
-                                  },
-                             ]
-                             },
-                        sessionInfo: {
-                            parameters: {                         
-                                ...req.body.sessionInfo.parameters,
-                                verified : "false"
-                            }
-                        }
-                        
-                },   
-            });
-        }
+            const result = await dialog.verify_code(sessionId, code);
+            
+            const payload = Social.verifyCode(req, res, result);
+            res.status(200).send(payload);
+        
         }
         //Reset the form to collect new input 
         else if(tag ==="reset_appointment_form"){
-            res.status(200).send({
-                pageInfo:{
-                        formInfo : { 
-                            parameterInfo :  [
-                                {
-                                    displayName: 'email',
-                                    required: true,
-                                    state: 'EMPTY',
-                                    value: '',
-                                    justCollected: false
-                                  },
-                            { displayName: 'verified', state: 'FILLED', value: 'false' }
-                             ]
-                             },
-                        sessionInfo: {
-                            parameters: {                         
-                                email: "",
-                                verified : "false"
-                            }
-                        }
-                        
-                    },
-                      
-            });
+            const payload = Social.resetAppointment(req, res);
+            res.status(200).send(payload);
+            
         }
         else if(tag === "appointment.verify_email"){
 
-                // get email
-                const email = req.body.sessionInfo.parameters.email;
-                const pageInfo = req.body.pageInfo.formInfo.parameterInfo;
+            // get email
+            const email = req.body.sessionInfo.parameters.email;
+            const pageInfo = req.body.pageInfo.formInfo.parameterInfo;
 
-                // get session and send 4 digit code
-                
-              const ver_results =  dialog.verify_email( sessionId,email);
+            const ver_results = await dialog.verifyEmail( sessionId,email);
 
-            ver_results ?
-                res.status(200).send({
-                    
-                    pageInfo:{
-                        currentPage : req.body.pageInfo.formInfo.parameterInfo.currentPage,
-                        formInfo : { 
-                                parameterInfo :  [
-                                    {
-                                        displayName: 'email',
-                                        required: true,
-                                        state: 'FILLED',
-                                        value: email,
-                                        justCollected: true
-                                      },
-                                    { displayName: 'verified', state: 'FILLED', value: 'false' }
-                                 ]
-                        }
-                        },
-                    sessionInfo: {
-                        session:req.body.sessionInfo.session,
-                        parameters: {                         
-                            email: email,
-                            verified : "false"
-                        }
-                        }
-                          
-                }) :
-               res.status(200).send({
-                    fulfillment_response: { 
-                    messages: [
-                        {
-                            text: {
-                                //fulfillment text response to be sent to the agent
-                                text: ["I had a problem verifying your email, Please try again."]
-                            }
-                        }
-                ] 
-                }, 
-                    pageInfo:{
-                            currentPage : req.body.pageInfo.formInfo.parameterInfo.currentPage,
-                            formInfo : { 
-                                parameterInfo :  [
-                                    {
-                                        displayName: 'email',
-                                        required: true,
-                                        state: 'EMPTY',
-                                        value: email,
-                                        justCollected: true
-                                      },
-                                    { displayName: 'verified', state: 'FILLED', value: 'false' }
-                                 ]
-                        }
-                        },
-                    sessionInfo: {
-                        session:req.body.sessionInfo.session,
-                        parameters: {                         
-                            email: email,
-                            verified : "false"
-                        }
-                        }
-                          
-                });
+            const payload = Social.verifyEmail(req, res, ver_results);
+            res.status(200).send(payload);
         }
         else if(tag  === "getstarted"){
             //Create Session
@@ -256,32 +92,8 @@ server.post('/api/messages', async (req :any , res : any) => {
         }
  
     }else{
-        // process no tags
-            // get session info and resend 
-            const session_info = req.body.sessionInfo;
-            //const parameters = req.body.
-            let jsonResponse = {
-                fulfillment_response: {
-                    messages: [
-                        {
-                            payload: payload
-                        },
-                        {
-                            text: {
-                                //fulfillment text response to be sent to the agent
-                                text: ["Hi! This is a webhook response"]
-                            }
-                        }
-                    ]
-                },
-                sessionInfo: {
-                    user_id: "john Doe"
-                }
-            };
-
-
-      res.status(200).json(jsonResponse);
-
+      const payload = Social.default(req, res);
+      res.status(200).json(payload);
     }
   
 

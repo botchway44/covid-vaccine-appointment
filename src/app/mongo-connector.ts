@@ -70,7 +70,7 @@ export class MongoClientConnection {
     }
 
     findAppointment(email: string) {
-        return this.appointments_collection?.find({email : email}).toArray();
+        return this.appointments_collection?.findOne({email : email});
     }
 
     findSession(id: string) {

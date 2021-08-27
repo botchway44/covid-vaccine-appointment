@@ -45,7 +45,7 @@ export class Dialog {
      }
     }
 
-   async verify_email(id : string, email: string){
+   async verifyEmail(id : string, email: string){
        const res = await this.mongoClient.findSession(id) as ISession;
        console.log("res ::: ", res);
 
