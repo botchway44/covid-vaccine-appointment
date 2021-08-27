@@ -58,11 +58,11 @@ export class MongoClientConnection {
     }
 
     async removeAppointment(appointment: IAppointment) {
-        return await this.appointments_collection?.deleteOne({ id: appointment.id });
+        return await this.appointments_collection?.deleteOne({ email: appointment.email });
     }
 
-    async updateAppointment(task: IAppointment) {
-        return await this.appointments_collection?.updateOne({ id: task.id }, { $set:task },{  upsert: true});
+    async updateAppointment(appointment: IAppointment) {
+        return await this.appointments_collection?.updateOne({ email: appointment.email }, { $set:appointment },{  upsert: true});
     }
 
     getAllAppointments(email: string) {

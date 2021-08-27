@@ -1,7 +1,18 @@
 export interface IAppointment{
-    id:string
     email : string,
-    date : any
-    time : any
-    location : any
+    location : any,
+    quantity : number
+    date : any,
+    time : any,
+}
+
+export class Appointment{
+
+    constructor(
+      public email : string,
+      public location : string,
+      public quantity : number,
+      public date : any,
+      public time : any
+    ){}
 }

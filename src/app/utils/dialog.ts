@@ -1,3 +1,4 @@
+import { Appointment } from "../../models/appointment";
 import { ISession, Session } from "../../models/session";
 import { MailerService } from "../mailer.service";
 import { MongoClientConnection } from "../mongo-connector";
@@ -10,6 +11,29 @@ export class Dialog {
        
    }
    
+
+   async createAppointment(appointment: Appointment, ssid:string) {
+      const res = await this.mongoClient.findSession(ssid) as ISession;
+
+      if (!res) {
+         var val = Math.floor(1000 + Math.random() * 9000);
+
+         // create a new session
+         const session = new Session(ssid,false, val+"")
+         const res = await this.mongoClient.addSession(session);
+      }
+
+      const results = await this.mongoClient.addAppointment(appointment);
+      if (results?.result?.ok) {
+         
+         // Email Appointment Details to user
+
+
+         return true;
+      }
+
+      return false;
+   }
    
   async verify_code(ssid : string,code: string) {
      const res = await this.mongoClient.findSession(ssid) as ISession;
@@ -24,7 +48,6 @@ export class Dialog {
   }
 
    async getStarted(id: string) {
-      
       
      const session =  await  this.mongoClient.findSession(id);
 
@@ -45,6 +68,11 @@ export class Dialog {
      }
     }
 
+   
+   async verifyDateTime(sessionId: string, date: any) {
+      const res = await this.mongoClient.findSession(sessionId) as ISession;
+
+   }
    async verifyEmail(id : string, email: string){
        const res = await this.mongoClient.findSession(id) as ISession;
        console.log("res ::: ", res);
@@ -72,5 +100,13 @@ export class Dialog {
       }
 
       return true;
-    }
+   }
+
+   async checkAppointment(email:string) {
+      const res = await this.mongoClient.findAppointment(email);
+      if (res) {
+         return res;
+      }
+      return null;
+   }
 }
