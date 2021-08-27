@@ -35,6 +35,8 @@ To run this project locally, you need to create a service account for the agent
 | DF_PRIVATE_KEY_ID |                                                                                                                                   |
 | DF_CLIENT_EMAIL   |                                                                                                                                   |
 | MONGODB_URL       | A mongodb connection string,<br> eg. `mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]` |
+| GMAIL             | The Email to be used by the SMTP Service `MailerService`. Check the guide Extra section to see how to setup Gmail for that.       |
+| GMAIL_PASS        | The provided Gmail password                                                                                                       |
 
 - run `npm install`
 - run `npm run start:dev`
