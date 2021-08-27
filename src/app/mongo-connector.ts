@@ -62,7 +62,7 @@ export class MongoClientConnection {
     }
 
     async updateAppointment(task: IAppointment) {
-        return await this.appointments_collection?.updateOne({ id: task.id }, task);
+        return await this.appointments_collection?.updateOne({ id: task.id }, { $set:task },{  upsert: true});
     }
 
     getAllAppointments(email: string) {
@@ -74,11 +74,11 @@ export class MongoClientConnection {
     }
 
     findSession(id: string) {
-        return this.appointments_collection?.findOne({id : id});
+        return this.sessions_collection?.findOne({id : id});
     }
 
     updateSession(id: string, session : ISession) {
-        return this.appointments_collection?.updateOne({id : id}, session );
+        return this.sessions_collection?.updateOne({ id: id }, {$set: session},{  upsert: true} );
     }
     getAppointment(id: string, email: string) {
         return this.appointments_collection?.findOne({ id: id, email: email });
