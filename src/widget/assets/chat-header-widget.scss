@@ -96,3 +96,9 @@
   // disable flex sheink
   flex-shrink: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .chat-header-container {
+    border-radius: 0px;
+  }
+}

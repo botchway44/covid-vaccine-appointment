@@ -1,4 +1,5 @@
 import { IntentRequest } from "../models/IntentRequest";
+import { Appointment } from "../models/appointment";
 import { BotApiServiceCx } from "./bot.api.service.cx";
 import { MongoClientConnection } from "./mongo-connector";
 import { parseChat } from "./utils/chat.utils";
@@ -30,7 +31,11 @@ server.post('/api/messages', async (req :any , res : any) => {
     let tag = req.body.fulfillmentInfo.tag;
     console.log("TAG:::",tag)
     console.log("------------------------------------------------------------------------")
-    let sessionId = req.body.sessionInfo.parameters.sessionId;
+    let sessionId = req.body?.sessionInfo?.parameters?.sessionId;
+    // if sessionId doesnt exist, create it
+    if(!sessionId){
+        sessionId = Math.random().toString(36).substring(7);
+    }
     console.log("sessionId:::",sessionId)
     console.log("------------------------------------------------------------------------")
 
@@ -46,6 +51,55 @@ server.post('/api/messages', async (req :any , res : any) => {
             res.status(200).send(payload);
         
         }
+
+        else if (tag ==="email_route_navigation") {
+            let email = req.body?.sessionInfo?.parameters?.email;
+            if (!email) {
+                const payload = Social.emailRouteNavigation(req, res, false);
+                res.status(200).send(payload);
+            } else {
+                const payload = Social.emailRouteNavigation(req, res, true);
+
+                res.status(200).send(payload);
+            }
+        }
+        else if (tag === "appointment.resend_code") {
+
+            const email = req.body.sessionInfo.parameters.email;
+            const ver_results = await dialog.verifyEmail( sessionId,email);
+
+            const payload = Social.resendCode(req, res);
+            res.status(200).send(payload);
+
+         }
+        else if (tag === "appointment.verify_date_time") {
+            // get code
+            const dateTime = new Date();
+            // verify code
+            const result = await dialog.verifyDateTime(sessionId, dateTime);
+            
+            // const payload = Social.verifyDateTime(req, res, result);
+            // res.status(200).send(payload);
+        }
+        // Create appointment by picking details from session
+        else if (tag === "appointment.create") {
+            const email = req.body.sessionInfo.parameters.email;
+            const location = req.body.sessionInfo.parameters.location;
+            const quantity = req.body.sessionInfo.parameters.quantity;
+            const dateTime = req.body.sessionInfo.parameters.datetime;
+            const appointment = new Appointment(email, location, quantity, dateTime, dateTime);
+            const result = await dialog.createAppointment(appointment,sessionId);
+
+            const payload = Social.createAppointment(req, res, result, appointment);
+            res.status(200).send(payload);
+
+        }
+            
+        else if (tag === "appointment.update") {
+            
+        } else if (tag === "appointment.delete") {
+            
+        }
         //Reset the form to collect new input 
         else if(tag ==="reset_appointment_form"){
             const payload = Social.resetAppointment(req, res);
@@ -56,8 +110,6 @@ server.post('/api/messages', async (req :any , res : any) => {
 
             // get email
             const email = req.body.sessionInfo.parameters.email;
-            const pageInfo = req.body.pageInfo.formInfo.parameterInfo;
-
             const ver_results = await dialog.verifyEmail( sessionId,email);
 
             const payload = Social.verifyEmail(req, res, ver_results);
@@ -65,30 +117,23 @@ server.post('/api/messages', async (req :any , res : any) => {
         }
         else if(tag  === "getstarted"){
             //Create Session
-            const res = await  dialog.getStarted(sessionId);
+            const results = await  dialog.getStarted(sessionId);
+
+            const payload = Social.getStarted(req, res, sessionId);
+
+            res.status(200).send(payload);  
         }
         else if(tag ==="check_appointment"){
             // if we have an email and is veried, show appointment details
             const email = req.body.sessionInfo?.parameters?.email;
-            
-           if(!email){
-          const payload =   {
-                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/188f9011-8a45-43ae-9c94-09c088632d6b",
-                fulfillment_response: { 
-                    messages: [
-                        {
-                            text: {
-                                //fulfillment text response to be sent to the agent
-                                text: ["Hi! This is a to get email"]
-                            }
-                        }
-                ] 
-                } 
+            let payload = {};
+            if (email) {
+                const appointment = await dialog.checkAppointment(email);
+                payload = Social.checkAppointment(req, res, appointment);
+            } else {
+                payload = Social.checkAppointment(req, res, null);
             }
-           }
-            // if we no email, ask for email
-
-            // if we have email but not veried, verify email
+            res.status(200).send(payload);
         }
  
     }else{
