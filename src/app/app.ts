@@ -75,7 +75,9 @@ server.post('/api/messages', async (req :any , res : any) => {
                                     state: 'FILLED',
                                     value: req.body.sessionInfo.parameters.code,
                                     justCollected: true
-                                  },
+                                },
+                              { displayName: 'verified', state: 'FILLED', value: 'true' }
+
                              ]
                              },
                         sessionInfo: {
@@ -91,14 +93,24 @@ server.post('/api/messages', async (req :any , res : any) => {
         else{
             // send Unverified
             console.log("Verification Failed");
-            res.status(200).send({
+                res.status(200).send({
+                   fulfillment_response: { 
+                    messages: [
+                        {
+                            text: {
+                                //fulfillment text response to be sent to the agent
+                                text: ["Verification failed. Please try again"]
+                            }
+                        }
+                ] 
+                }, 
                 pageInfo:{
                         formInfo : { 
                             parameterInfo :  [
                                 {
                                     displayName: 'code',
                                     required: true,
-                                    state: 'FILLED',
+                                    state: 'EMPTY',
                                     value: req.body.sessionInfo.parameters.code,
                                     justCollected: true
                                   },
@@ -150,13 +162,14 @@ server.post('/api/messages', async (req :any , res : any) => {
 
                 // get session and send 4 digit code
                 
-                dialog.verify_email( sessionId,email);
+              const ver_results =  dialog.verify_email( sessionId,email);
 
+            ver_results ?
                 res.status(200).send({
                     
                     pageInfo:{
-                            currentPage : req.body.pageInfo.formInfo.parameterInfo.currentPage,
-                            formInfo : { 
+                        currentPage : req.body.pageInfo.formInfo.parameterInfo.currentPage,
+                        formInfo : { 
                                 parameterInfo :  [
                                     {
                                         displayName: 'email',
@@ -177,20 +190,51 @@ server.post('/api/messages', async (req :any , res : any) => {
                         }
                         }
                           
+                }) :
+               res.status(200).send({
+                    fulfillment_response: { 
+                    messages: [
+                        {
+                            text: {
+                                //fulfillment text response to be sent to the agent
+                                text: ["I had a problem verifying your email, Please try again."]
+                            }
+                        }
+                ] 
+                }, 
+                    pageInfo:{
+                            currentPage : req.body.pageInfo.formInfo.parameterInfo.currentPage,
+                            formInfo : { 
+                                parameterInfo :  [
+                                    {
+                                        displayName: 'email',
+                                        required: true,
+                                        state: 'EMPTY',
+                                        value: email,
+                                        justCollected: true
+                                      },
+                                    { displayName: 'verified', state: 'FILLED', value: 'false' }
+                                 ]
+                        }
+                        },
+                    sessionInfo: {
+                        session:req.body.sessionInfo.session,
+                        parameters: {                         
+                            email: email,
+                            verified : "false"
+                        }
+                        }
+                          
                 });
         }
         else if(tag  === "getstarted"){
-          const res = await  dialog.getStarted(sessionId);
-
-          if(res){
-            // Welcome message, session created
-          }else{
-            // Welcome Message, but couldnt create session
-          }
+            //Create Session
+            const res = await  dialog.getStarted(sessionId);
         }
         else if(tag ==="check_appointment"){
             // if we have an email and is veried, show appointment details
-           const email =req.body.sessionInfo?.parameters?.email;
+            const email = req.body.sessionInfo?.parameters?.email;
+            
            if(!email){
           const payload =   {
                 target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/188f9011-8a45-43ae-9c94-09c088632d6b",

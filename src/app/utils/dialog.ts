@@ -23,7 +23,9 @@ export class Dialog {
      return false
   }
 
-   async getStarted(id: string){
+   async getStarted(id: string) {
+      
+      
      const session =  await  this.mongoClient.findSession(id);
 
      if(session){
@@ -45,21 +47,30 @@ export class Dialog {
 
    async verify_email(id : string, email: string){
        const res = await this.mongoClient.findSession(id) as ISession;
+       console.log("res ::: ", res);
 
-       if(res){
-         res.email = email;
-         res.verified = false;  
-       }
-     
+      if (!res) {
+         return false;
+      }
+      
+      res.email = email;
+      res.verified = true;  
        const updated = await this.mongoClient.updateSession(id, res);
       // update the session with the id
 
+
+      console.log("UPDATED ::: ", updated);
       if(updated?.result?.ok){
          // send verification
          MailerService.sendEmail(email, res.code);
+         console.log("UPDATE COMPLETE:::::::::::::::::::::::")
       }
       else{
          // update failed
+         console.log("UPDATE FAILED:::::::::::::::::::::::")
+         return false;
       }
+
+      return true;
     }
 }

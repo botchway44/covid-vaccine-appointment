@@ -265,13 +265,12 @@ export class ChatWidgetElement extends HTMLElement {
         this.hideChatLoader();
       }
 
-    });
+    } ) ;
 
 
     // hide chat loader
     this.hideChatLoader();
 
-    //TODO: uncomment in prod -  set chat state to false
     this.hideChatFrame();
 
     this.loadInitialChat();
@@ -313,8 +312,6 @@ export class ChatWidgetElement extends HTMLElement {
   protected showChatFrame(): void {
     // Show up the chat view
     this.chatViewFrame.style.display = "flex";
-
-
 
 
     // hide chat suggesstion chips

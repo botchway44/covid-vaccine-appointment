@@ -10,8 +10,8 @@ export class MailerService{
             from: `"Nana Adwoa" <${process.env.GMAIL}>`,
             to: `${email}`,
             subject: 'COVID Appointment Booking',
-            text: 'Hey there, this is Nana Adwoa ;) ',
-            html: `<b>Hey there! </b><br> This is Nana Adwoa,You here is a confirmation code ${code} to verify your email to set an appointment to book your covid vaccine shot.  </b><br> Best regards. <br>Nana Adwoa`
+            text: 'Hey!! 👋🏾, this is Nana Adwoa ;) ',
+            html: `<b>Hey there!</b> 👋🏾 <br><br> This is Nana Adwoa,You here is a confirmation code <b> ${code} </b>to verify your email to set an appointment to book your covid vaccine shot.  <br><br> Best regards. <br>Nana Adwoa`
         };
 
         let mailTransporter = nodemailer.createTransport({
@@ -22,7 +22,8 @@ export class MailerService{
             }
         });
 
-        mailTransporter.sendMail(mailOptions, (error:any, info:any) => {
+      mailTransporter.sendMail(mailOptions, (error: any, info: any) => {
+          console.log("Sending Emails:::");
             if (error) {
                 return console.log(error);
             }
