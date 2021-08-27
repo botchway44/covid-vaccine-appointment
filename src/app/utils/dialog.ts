@@ -6,11 +6,11 @@ import { MongoClientConnection } from "../mongo-connector";
 export class Dialog {
    
    constructor(
-      public mongoClient: MongoClientConnection
-    ) {
+      public mongoClient: MongoClientConnection,
+      public mailerService: MailerService
+   ) { }
        
-   }
-   
+
 
    async createAppointment(appointment: Appointment, ssid:string) {
       const res = await this.mongoClient.findSession(ssid) as ISession;
@@ -25,9 +25,9 @@ export class Dialog {
 
       const results = await this.mongoClient.addAppointment(appointment);
       if (results?.result?.ok) {
-         
+         console.log("Appointment created::SENDING EMAIL");
          // Email Appointment Details to user
-
+         this.mailerService.sendAppointDetailsEmail(appointment.email, appointment);
 
          return true;
       }
@@ -90,7 +90,7 @@ export class Dialog {
       console.log("UPDATED ::: ", updated);
       if(updated?.result?.ok){
          // send verification
-         MailerService.sendEmail(email, res.code);
+         this.mailerService.sendConfirmationEmail(email,{ code : res.code});
          console.log("UPDATE COMPLETE:::::::::::::::::::::::")
       }
       else{

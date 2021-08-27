@@ -192,7 +192,7 @@ chatInputTemplate.innerHTML = `
   <section class="chat-input-container">
 
     <input matInput autocomplete="off"  type="text"
-      class="chat-input-box" placeholder="Ask me something">
+      class="chat-input-box" placeholder="Start typing...">
 
       <div class="send-button">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">

@@ -5,6 +5,7 @@ import { MongoClientConnection } from "./mongo-connector";
 import { parseChat } from "./utils/chat.utils";
 import { Dialog } from "./utils/dialog";
 import { Social } from "./utils/social";
+import { MailerService } from "./mailer.service";
 
 const express = require('express');
 const server = express();
@@ -20,7 +21,7 @@ server.use(express.static(path.join(__dirname, "../../.")));
 
 let mongoClient: MongoClientConnection;
 let dialog: Dialog;
-
+let mailService : MailerService;
 
 
 server.post('/api/messages', async (req :any , res : any) => {
@@ -172,10 +173,11 @@ server.post('/channels/web', async (req: any, res: any) => {
 
 const PORT = process.env.PORT || 9000;
 mongoClient = new MongoClientConnection();
+mailService = new MailerService();
 
 mongoClient.connect().then(() => {
     console.log("Database is connected");
-    dialog = new Dialog(mongoClient);
+    dialog = new Dialog(mongoClient,mailService);
     server.listen(PORT, () => {
         console.log("App is running on port " + PORT);
         console.log('Listening for conversations ... on port ', PORT);
