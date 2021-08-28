@@ -21,7 +21,8 @@ export class MailerService{
         const options = {
             viewEngine: {
                 partialsDir: __dirname + "./../../assets/templates",
-                layoutsDir: __dirname + "./../../assets/templates/layout",
+                layoutsDir: __dirname + "./../../assets/templates/layouts",
+                defaultLayout: "main",
                 extname: ".hbs"
             },
             extName: ".hbs",
@@ -37,7 +38,7 @@ export class MailerService{
     const  mailOptions = {
             from: `"Nana Adwoa" <${process.env.GMAIL}>`,
             to: `${email}`,
-            subject: 'COVID Appointment Booking',
+            subject: `Hey, here's your PIN`,
             template: "email_confirmation",
             context: mailData,
         };
@@ -50,7 +51,7 @@ export class MailerService{
                 if (error) {
                     return console.log(error);
                 }
-                console.log('Message sent: %s', info.messageId);
+                console.log('Message sent: %s', info);
         });
     }
 
@@ -59,7 +60,7 @@ export class MailerService{
       const  mailOptions = {
             from: `"Nana Adwoa" <${process.env.GMAIL}>`,
             to: `${email}`,
-            subject: 'COVID Appointment Booking',
+            subject: 'Appointment Details',
             template: "appointment_details",
             context: mailData,
         };
