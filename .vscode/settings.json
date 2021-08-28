@@ -1,5 +1,6 @@
 {
     "editor.formatOnSave": true,
     "files.autoSave": "afterDelay",
-    "editor.codeActionsOnSave": null
+    "editor.codeActionsOnSave": null,
+    "liveServer.settings.port": 5501
 }
