@@ -7,6 +7,9 @@
 
 A conversational bot(Nana Adwoa) allowing users to book days with available slots to take covid vaccine.
 
+## Demo
+
+
 ## 💡 Motivation and Context
 
 <!--- Describe your app in one or two sentences -->

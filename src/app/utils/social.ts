@@ -22,7 +22,7 @@ export class Social {
 
     static createAppointment(req: any, resp: any, verified: boolean, appointment : IAppointment) {
         if (verified) {
-            // send verified payload
+            // send created payload
             return{
                         
                 sessionInfo: {
@@ -32,13 +32,16 @@ export class Social {
                         location: appointment.location,
                         quantity: appointment.quantity,
                         date: appointment.date,
-                        time : appointment.time,
+                        time: appointment.time,
+                        hospital: appointment.hospital.name,
+                        map : appointment.hospital.location
                     }
                 }
 
             };
         }
 
+        // Send a fulfillment showing Booking failed
          return{
                         
                 sessionInfo: {
@@ -48,7 +51,9 @@ export class Social {
                         location: appointment.location,
                         quantity: appointment.quantity,
                         date: appointment.date,
-                        time : appointment.time,
+                        time: appointment.time,
+                        hospital: appointment.hospital.name,
+                        map : appointment.hospital.location
                     }
                 }
 
@@ -251,55 +256,7 @@ export class Social {
         
     }
 
-    static default(req: any, resp: any) {
-
-        
-        const payload =
-        {
-
-            "messageType": "CHIPS",
-            "payload": [
-                {
-                    "text": "Webhook Balance",
-                    "id": 1
-                },
-                {
-                    "id": 2,
-                    "text": "Webhook Check Fx Rate"
-                },
-                {
-                    "id": 3,
-                    "text": "Webhook View services"
-                }
-            ]
-
-        };
-
-  // process no tags
-            // get session info and resend 
-            const session_info = req.body.sessionInfo;
-            //const parameters = req.body.
-            let jsonResponse = {
-                fulfillment_response: {
-                    messages: [
-                        {
-                            payload: payload
-                        },
-                        {
-                            text: {
-                                //fulfillment text response to be sent to the agent
-                                text: ["Hi! This is a webhook response"]
-                            }
-                        }
-                    ]
-                },
-                sessionInfo: {
-                     ...req.body.sessionInfo.parameters,
-                }
-            };
-
-    }
-
+ 
    static checkAppointment(req: any, resp: any, appointment : (IAppointment | null)) {
         if(appointment){
             return {
@@ -312,7 +269,9 @@ export class Social {
                         quantity: appointment.quantity,
                         date: appointment.date,
                         time: appointment.time,
-                        verified: "true"
+                        verified: "true",
+                        hospital: appointment.hospital.name,
+                        map : appointment.hospital.location
                     }
                 }
             }

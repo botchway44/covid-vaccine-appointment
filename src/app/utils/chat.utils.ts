@@ -1,5 +1,6 @@
 import { Chat, CHAT_MESSAGE_TYPE, CHAT_TYPE, Chip, ChipMessage, IChat, ImageMessage, IMedia, ListItem, ListMessage, Media, MessageItem, RichChip } from "../../models/chat.model";
 
+// TODO Rewrite and use 
 export function parseChat(response: any) {
 
     const chats: IChat[] = [];
