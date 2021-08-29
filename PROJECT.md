@@ -48,6 +48,9 @@ To run this project locally, you need to create a service account for the agent
 The last step is to update the agent id in the chat component to the agent id of your project. You can find the agent id in the url bar when you open your project in dialogflow CX console or in the all agents page of the CX console.
 
 - Click on the Kebab menu closer to the agent name
+- ![Screenshot (38)_LI](https://user-images.githubusercontent.com/16451643/131257205-99a32bc3-4cba-4bea-bc75-c0cb72051882.jpg)
+- Select Copy name and paste in any editor
+- 
 
 ```html
 <dialogflowcx-chat-widget
