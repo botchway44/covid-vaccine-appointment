@@ -77,7 +77,6 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "harp": "*",
-    "moment": "^2.29.1",
     "mongodb": "^3.1.12",
     "nodemailer": "^6.6.3",
     "nodemailer-express-handlebars": "^4.0.0",
