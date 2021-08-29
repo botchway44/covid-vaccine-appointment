@@ -50,7 +50,8 @@ The last step is to update the agent id in the chat component to the agent id of
 - Click on the Kebab menu closer to the agent name
 - ![Screenshot (38)_LI](https://user-images.githubusercontent.com/16451643/131257205-99a32bc3-4cba-4bea-bc75-c0cb72051882.jpg)
 - Select Copy name and paste in any editor
-- 
+![image](https://user-images.githubusercontent.com/16451643/131258295-354d8997-4d9c-46b6-b2c1-02732ba0bfa0.png)
+- Your agent id is the id after the agents
 
 ```html
 <dialogflowcx-chat-widget
