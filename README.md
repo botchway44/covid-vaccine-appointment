@@ -9,6 +9,7 @@ A conversational bot(Nana Adwoa) allowing users to book days with available slot
 
 ## Demo
 
+Check out our website for a live [demo](http://dfcx-vaccine-appointment.herokuapp.com/)
 
 ## 💡 Motivation and Context
 
@@ -53,6 +54,11 @@ A few resources to get you started if this is your first time working with Dialo
 - [Dialogflow CX Console overview](https://cloud.google.com/dialogflow/cx/docs/concept/console)
 
 Design shall set conversations free ❤ !!
+
+## Credits
+
+- Bot conversation video created with [Synthesia](https://www.synthesia.io/request-demo)
+- Email templates design created with [Designmodo](https://designmodo.com/postcards/)
 
 ## License
 
