@@ -55,7 +55,8 @@ You can use [ngrok](https://ngrok.com/docs) or [localtunnel](https://github.com/
 
 - Open the DialogflowCX console and click on the Manage tab
 - Select Webhooks and from the created webhook with the name fulfillment, update it to the generated address.
-<!-- Update webhook with url -->
+
+![image](https://user-images.githubusercontent.com/16451643/131264362-c6421f79-9323-4e0f-a95f-44d7926c137c.png)
 
 <br>
 
