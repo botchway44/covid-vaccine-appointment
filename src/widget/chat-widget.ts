@@ -111,6 +111,7 @@ export class ChatWidgetElement extends HTMLElement {
       const header = this.shadowRoot.querySelector("chat-header-widget");
       header.setAttribute("chat-title", chatTitle);
     }
+
     this.hideChatLoader();
 
     // create an intentRequest
@@ -126,7 +127,6 @@ export class ChatWidgetElement extends HTMLElement {
 
 
 
-    // Add Listeners for send message here
     this.chatToggleButton.addEventListener("click", this.toggleChatViewState)
 
     // init chat
@@ -137,8 +137,6 @@ export class ChatWidgetElement extends HTMLElement {
 
       console.log(message)
       this.addChat(chat);
-
-
 
 
       // show that a mssage request is sent
@@ -226,6 +224,7 @@ export class ChatWidgetElement extends HTMLElement {
       this.addChat(chat);
 
     });
+
     // Listen for chat suggesstion chip clicked
     this.chatSuggesstionElement.addEventListener("click", (_event) => {
 
@@ -233,9 +232,6 @@ export class ChatWidgetElement extends HTMLElement {
       if (!this.chatState && !this.chatSuggesstionDirty) {
         // open
         this.showChatFrame();
-
-        // show chat loader
-        this.showChatLoader();
 
         // set message to hello for the first time
         //TODO : Remove, chat is initialized once the page is loaded
@@ -264,7 +260,6 @@ export class ChatWidgetElement extends HTMLElement {
       } else {
         this.hideChatLoader();
       }
-
     } ) ;
 
 
@@ -411,7 +406,9 @@ export class ChatWidgetElement extends HTMLElement {
     this.intentRequest.query = "hello";
     this.intentRequest.requestType = "TEXT";
 
-    this.showChatLoader();
+    this.showChatLoader()
+
+    
     this.verifyIntents(this.intentRequest)
   }
 
