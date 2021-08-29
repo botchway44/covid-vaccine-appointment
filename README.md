@@ -11,9 +11,7 @@ A conversational bot(Nana Adwoa) allowing users to book days with available slot
 
 Check out our website for a live [demo](https://dfcx-vaccine-appointment.herokuapp.com/)
 
-
 https://user-images.githubusercontent.com/16451643/131252255-a93dfec5-c735-4008-a2e1-dc6d993b1e7e.mp4
-
 
 ## 💡 Motivation and Context
 
@@ -66,18 +64,4 @@ Design shall set conversations free ❤ !!
 
 ## License
 
-```
-Copyright 2021 Emmanuel Asamoah Botwe
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
+See [LICENSE](https://github.com/botchway44/covid-vaccine-appointment/blob/main/LICENSE).
