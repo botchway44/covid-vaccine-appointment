@@ -41,15 +41,15 @@ Dialogflow CX Competition -->
 
 ## 📸 Screenshots
 
-<img src="assets/images/ss.png"/>
+<img src="assets/images/ss.PNG"/>
 
 | 1                                            | 2                                            |
 | -------------------------------------------- | -------------------------------------------- |
-| <img src="assets/images/s1.png" width="400"> | <img src="assets/images/s2.png" width="400"> |
+| <img src="assets/images/s1.PNG" width="400"> | <img src="assets/images/s2.PNG" width="400"> |
 
 | 3                                            | 4                                            |
 | -------------------------------------------- | -------------------------------------------- |
-| <img src="assets/images/s3.png" width="400"> | <img src="assets/images/s4.png" width="400"> |
+| <img src="assets/images/s3.PNG" width="400"> | <img src="assets/images/s4.PNG" width="400"> |
 
 A few resources to get you started if this is your first time working with Dialogflow CX:
 
