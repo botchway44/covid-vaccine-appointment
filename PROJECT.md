@@ -31,7 +31,6 @@ To run this project locally, you need to create a service account for the agent
 
 ---
 
-
 | Key               | Description                                                                                                                 |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | DF_PROJECT_ID     | The project id in the service json file                                                                                     |
@@ -67,14 +66,15 @@ You can use [ngrok](https://ngrok.com/docs) or [localtunnel](https://github.com/
 
 The last step is to update the agent id in the chat component to the agent id of your project. You can find the agent id in the url bar when you open your project in dialogflow CX console or in the all agents page of the CX console.
 
-- Click on the Kebab menu closer to the agent name
-  ![Screenshot (38)_LI](https://user-images.githubusercontent.com/16451643/131257205-99a32bc3-4cba-4bea-bc75-c0cb72051882.jpg)
+Click on the Kebab menu closer to the agent name
+![Screenshot (38)_LI](https://user-images.githubusercontent.com/16451643/131257205-99a32bc3-4cba-4bea-bc75-c0cb72051882.jpg)
 
------------------------------
+---
 
-- Select Copy name and paste in any editor
-  ![image](https://user-images.githubusercontent.com/16451643/131258295-354d8997-4d9c-46b6-b2c1-02732ba0bfa0.png)
-- Your agent id is the id after the agents
+Select Copy name and paste in any editor. Your agent id comes after the agents
+![image](https://user-images.githubusercontent.com/16451643/131258295-354d8997-4d9c-46b6-b2c1-02732ba0bfa0.png)
+
+Replace the agent id and webhook url in the chat component.
 
 ```html
 <dialogflowcx-chat-widget
