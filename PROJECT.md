@@ -20,7 +20,7 @@ Not only are most people also busy but due to social distancing regulations and 
 The solution here is simple, a simple conversational assistant or chat bot integrated into all the health service web platforms and also can be deployed as a telephony system where people can book days available for people to take their vaccines shots and schedule the second shot day. In a day, there are a number of shots and number of people who can take. This will prevent long queues and give people the comfort to take the vaccines and keep everyone Safe.
 For integrations, a custom integration will be made for web to allow it to be easily embedded on websites. A custom one can also be made for mobile applications to allow easy integration into Mobile apps too if the time permit (Use case Flutter Framework).
 
-## ⚙️ Getting Started
+# ⚙️ Getting Started
 
 To run this project locally, you need to create a service account for the agent
 
@@ -39,16 +39,34 @@ To run this project locally, you need to create a service account for the agent
 | GMAIL             | The Email to be used by the SMTP Service `MailerService`. Check the guide Extra section to see how to setup Gmail for that. |
 | GMAIL_PASS        | The provided Gmail password                                                                                                 |
 
+<br>
+
 - run `npm install`
 - run `npm run start:dev`
 - locate the project on `http://localhost:9000/dev.html`
 
+<br>
+
+## Updating the Webhook from DialogflowCX console
+
+---
+
+You can use [ngrok](https://ngrok.com/docs) or [localtunnel](https://github.com/localtunnel/localtunnel) to expose the webhook to the internet. After exporting the port `9000` you can update the webhook in the DialogflowCX console.
+
+- Open the DialogflowCX console and click on the Manage tab
+- Select Webhooks and from the created webhook with the name fulfillment, update it to the generated address.
+<!-- Update webhook with url -->
+
+<br>
+
 ## Updating the agent id
+
+---
 
 The last step is to update the agent id in the chat component to the agent id of your project. You can find the agent id in the url bar when you open your project in dialogflow CX console or in the all agents page of the CX console.
 
 - Click on the Kebab menu closer to the agent name
-- ![Screenshot (38)_LI](https://user-images.githubusercontent.com/16451643/131257205-99a32bc3-4cba-4bea-bc75-c0cb72051882.jpg)
+  ![Screenshot (38)_LI](https://user-images.githubusercontent.com/16451643/131257205-99a32bc3-4cba-4bea-bc75-c0cb72051882.jpg)
 - Select Copy name and paste in any editor
   ![image](https://user-images.githubusercontent.com/16451643/131258295-354d8997-4d9c-46b6-b2c1-02732ba0bfa0.png)
 - Your agent id is the id after the agents
@@ -61,10 +79,10 @@ The last step is to update the agent id in the chat component to the agent id of
 >
 </dialogflowcx-chat-widget>
 
-<!-- NOTE - if you want to attach the widget on a custom site, replace the agent-url with the server domain then append /channels/web -->
+<!-- NOTE - if you want to attach the widget on a custom site, replace the agent-url with the domain of the server you hosted the project on then append /channels/web -->
 ```
 
-## Extra
+# Extra
 
 - Guide on obtaining [Google Service Account](https://cloud.google.com/dialogflow/cx/docs/quick/setup)
 - Guide on setting up Nodemailer with [Google Account](https://mailtrap.io/blog/nodemailer-gmail/)
