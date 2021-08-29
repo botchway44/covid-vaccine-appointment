@@ -1,7 +1,8 @@
-import { Appointment } from "../../models/appointment";
+import { Appointment, IDateTime } from "../../models/appointment";
 import { ISession, Session } from "../../models/session";
 import { MailerService } from "../mailer.service";
 import { MongoClientConnection } from "../mongo-connector";
+import { formatDate } from "./date";
 
 export class Dialog {
    
@@ -27,6 +28,9 @@ export class Dialog {
       if (results?.result?.ok) {
          console.log("Appointment created::SENDING EMAIL");
          // Email Appointment Details to user
+         // modify the date strings to be in the correct format
+         const date = formatDate(appointment.date as IDateTime);
+         appointment.date = date;
          this.mailerService.sendAppointDetailsEmail(appointment.email, appointment);
 
          return true;

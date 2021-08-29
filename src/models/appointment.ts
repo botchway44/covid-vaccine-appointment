@@ -16,7 +16,18 @@ export class Appointment{
       public location: string,
       public hospital: IHOSPITAL,
       public quantity : number,
-      public date : any,
-      public time : any
+      public date : IDateTime | string,
+      public time : IDateTime | string,
     ){}
+}
+  
+
+export interface IDateTime{
+  year: number,
+  month: number,
+  day: number,
+  hours: number,
+  minutes: number,
+  seconds: number,
+  nano : number
 }
