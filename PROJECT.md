@@ -25,23 +25,41 @@ For integrations, a custom integration will be made for web to allow it to be ea
 To run this project locally, you need to create a service account for the agent
 
 - Clone the project `https://github.com/botchway44/covid-vaccine-appointment.git`
-- Create an environmental variables (.env)
-- Create a [service account](https://cloud.google.com/dialogflow/es/docs/quick/setup) and from the json file update these fields in your .env file
+- Create an environmental variable (.env file) in the root directory of the project
+- Create a mongo database for the project, obtain a [connection string](https://docs.mongodb.com/manual/reference/connection-string/) and update the .env file with the [connection string](https://docs.mongodb.com/manual/reference/connection-string)
+- Create a [service account](https://cloud.google.com/dialogflow/cx/docs/quick/setup) and from the json file update these fields in your .env file
 
-| Key               | Description                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| DF_PROJECT_ID     | The project id                                                                                                                    |
-| DF_PRIVATE_KEY    |                                                                                                                                   |
-| DF_PRIVATE_KEY_ID |                                                                                                                                   |
-| DF_CLIENT_EMAIL   |                                                                                                                                   |
-| MONGODB_URL       | A mongodb connection string,<br> eg. `mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]` |
-| GMAIL             | The Email to be used by the SMTP Service `MailerService`. Check the guide Extra section to see how to setup Gmail for that.       |
-| GMAIL_PASS        | The provided Gmail password                                                                                                       |
+| Key               | Description                                                                                                                 |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| DF_PROJECT_ID     | The project id in the service json file                                                                                     |
+| DF_PRIVATE_KEY    | The peivate key in the service json file                                                                                    |
+| DF_PRIVATE_KEY_ID | The private key id in the service json file                                                                                 |
+| DF_CLIENT_EMAIL   | The client email in the service json file                                                                                   |
+| MONGODB_URL       | A mongodb [connection string](https://cloud.google.com/dialogflow/cx/docs/quick/setup)                                      |
+| GMAIL             | The Email to be used by the SMTP Service `MailerService`. Check the guide Extra section to see how to setup Gmail for that. |
+| GMAIL_PASS        | The provided Gmail password                                                                                                 |
 
 - run `npm install`
 - run `npm run start:dev`
 - locate the project on `http://localhost:9000/dev.html`
 
+## Updating the agent id
+
+The last step is to update the agent id in the chat component to the agent id of your project. You can find the agent id in the url bar when you open your project in dialogflow CX console or in the all agents page of the CX console.
+
+- Click on the Kebab menu closer to the agent name
+
+```html
+<dialogflowcx-chat-widget
+  chat-title="Vaccine Appointments"
+  agent-id="replace-with-your-agent-id"
+  agent-url="/channels/web"
+>
+</dialogflowcx-chat-widget>
+```
+
 ## Extra
 
+- Guide on obtaining [Google Service Account](https://cloud.google.com/dialogflow/cx/docs/quick/setup)
 - Guide on setting up Nodemailer with [Google Account](https://mailtrap.io/blog/nodemailer-gmail/)
+- Guide on Setting up [MongoDB on ATLAS](https://studio3t.com/knowledge-base/articles/mongodb-atlas-tutorial/) to obtain connection string

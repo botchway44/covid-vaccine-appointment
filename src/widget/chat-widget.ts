@@ -103,7 +103,6 @@ export class ChatWidgetElement extends HTMLElement {
     // Get intent URL
     this.intentUrl = this.getAttribute("agent-url") || "http://localhost:2000/interactions/api";
     const agentId = this.getAttribute("agent-id") ;
-
     const chatTitle = this.getAttribute("chat-title") || "Virtual Chat";
 
     if (chatTitle) {
