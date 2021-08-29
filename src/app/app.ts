@@ -91,11 +91,6 @@ server.post('/api/messages', async (req :any , res : any) => {
             res.status(200).send(payload);
 
         }
-        else if (tag === "appointment.update") {
-
-        } else if (tag === "appointment.delete") {
-  
-        }
         /**
          * Verifies user entered code
          */
