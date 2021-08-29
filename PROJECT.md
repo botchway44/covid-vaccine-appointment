@@ -29,6 +29,9 @@ To run this project locally, you need to create a service account for the agent
 - Create a mongo database for the project, obtain a [connection string](https://docs.mongodb.com/manual/reference/connection-string/) and update the .env file with the [connection string](https://docs.mongodb.com/manual/reference/connection-string)
 - Create a [service account](https://cloud.google.com/dialogflow/cx/docs/quick/setup) and from the json file update these fields in your .env file
 
+---
+
+
 | Key               | Description                                                                                                                 |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | DF_PROJECT_ID     | The project id in the service json file                                                                                     |
@@ -41,6 +44,8 @@ To run this project locally, you need to create a service account for the agent
 
 <br>
 
+---
+
 - run `npm install`
 - run `npm run start:dev`
 - locate the project on `http://localhost:9000/dev.html`
@@ -48,8 +53,6 @@ To run this project locally, you need to create a service account for the agent
 <br>
 
 ## Updating the Webhook from DialogflowCX console
-
----
 
 You can use [ngrok](https://ngrok.com/docs) or [localtunnel](https://github.com/localtunnel/localtunnel) to expose the webhook to the internet. After exporting the port `9000` you can update the webhook in the DialogflowCX console.
 
@@ -61,12 +64,13 @@ You can use [ngrok](https://ngrok.com/docs) or [localtunnel](https://github.com/
 
 ## Updating the agent id
 
----
-
 The last step is to update the agent id in the chat component to the agent id of your project. You can find the agent id in the url bar when you open your project in dialogflow CX console or in the all agents page of the CX console.
 
 - Click on the Kebab menu closer to the agent name
   ![Screenshot (38)_LI](https://user-images.githubusercontent.com/16451643/131257205-99a32bc3-4cba-4bea-bc75-c0cb72051882.jpg)
+
+-----------------------------
+
 - Select Copy name and paste in any editor
   ![image](https://user-images.githubusercontent.com/16451643/131258295-354d8997-4d9c-46b6-b2c1-02732ba0bfa0.png)
 - Your agent id is the id after the agents
