@@ -18,7 +18,7 @@ As taking Vaccines is still in progress, most of the population are busy and wou
 Not only are most people also busy but due to social distancing regulations and safety reasons, people feel afraid of joining long queues or waiting several hours at vaccination spots or centers where it would be easy for them to take shots if they know exactly the time to come for the vaccine.
 
 The solution here is simple, a simple conversational assistant or chat bot integrated into all the health service web platforms and also can be deployed as a telephony system where people can book days available for people to take their vaccines shots and schedule the second shot day. In a day, there are a number of shots and number of people who can take. This will prevent long queues and give people the comfort to take the vaccines and keep everyone Safe.
-For integrations, a custom integration will be made for web to allow it to be easily embedded on websites. A custom one can also be made for mobile applications to allow easy integration into Mobile apps too if the time permit (Use case Flutter Framework).
+For integrations, a custom integration will be made for web to allow it to be easily embedded on health service websites.
 
 # ⚙️ Getting Started
 
