@@ -20,10 +20,6 @@ export class ChatImageWidgetElement extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(chatImageTemplate.content.cloneNode(true));
 
-
-    // this.message = JSON.parse(this.getAttribute("data"));
-    // this.chat = JSON.parse(this.getAttribute("message"));
-
     // get the message element and append message
     this.imagesContainer = this.shadowRoot.querySelector(".chat-widget-image-container");
   }

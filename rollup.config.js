@@ -10,7 +10,7 @@ import sourceMaps from 'rollup-plugin-sourcemaps';
 
 
 
-import pkg from './widget.package.json';
+import pkg from './config/widget.package.json';
 
 const banner =
   `/**
