@@ -97,6 +97,10 @@ you hosted the project on then append /channels/web
 
 # Extra
 
+A few resources and guides when setting this project up
+
+- [Dialogflow CX Console overview](https://cloud.google.com/dialogflow/cx/docs/concept/console)
+
 - Guide on obtaining [Google Service Account](https://cloud.google.com/dialogflow/cx/docs/quick/setup)
 - Guide on setting up Nodemailer with [Google Account](https://mailtrap.io/blog/nodemailer-gmail/)
 - Guide on Setting up [MongoDB on ATLAS](https://studio3t.com/knowledge-base/articles/mongodb-atlas-tutorial/) to obtain connection string

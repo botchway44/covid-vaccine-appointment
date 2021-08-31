@@ -51,16 +51,17 @@ Dialogflow CX Competition -->
 | -------------------------------------------- | -------------------------------------------- |
 | <img src="assets/images/s3.PNG" width="400"> | <img src="assets/images/s4.PNG" width="400"> |
 
-A few resources to get you started if this is your first time working with Dialogflow CX:
+## Built with
 
-- [Dialogflow CX Console overview](https://cloud.google.com/dialogflow/cx/docs/concept/console)
-
-Design shall set conversations free ❤ !!
+- Dialogflow CX
+- Nodejs with Typescript
+- Mongodb
 
 ## Credits
 
 - Bot conversation video created with [Synthesia](https://www.synthesia.io/request-demo)
 - Email templates design created with [Designmodo](https://designmodo.com/postcards/)
+- Chat loader animation from [Three Dots](https://github.com/nzbin/three-dots)
 
 ## License
 
