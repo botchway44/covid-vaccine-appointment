@@ -25,7 +25,7 @@ For integrations, a custom integration will be made for web to allow it to be ea
 To run this project locally, you need to create a service account for the agent
 
 - Clone the project `https://github.com/botchway44/covid-vaccine-appointment.git`
-- Create an environmental variable (.env file) in the root directory of the project
+- Create an environmental variable (.env file) in the root directory of the project - use [.env.default]() as a template
 - Create a mongo database for the project, obtain a [connection string](https://docs.mongodb.com/manual/reference/connection-string/) and update the .env file with the [connection string](https://docs.mongodb.com/manual/reference/connection-string)
 - Create a [service account](https://cloud.google.com/dialogflow/cx/docs/quick/setup) and from the json file update these fields in your .env file
 
