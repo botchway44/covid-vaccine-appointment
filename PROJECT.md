@@ -51,6 +51,10 @@ To run this project locally, you need to create a service account for the agent
 
 <br>
 
+## Importing Agent to the DialogflowCX console
+
+- Open the dialogflow cx console and create a new project and follow the guide to [restore/import the agent.](https://cloud.google.com/dialogflow/cx/docs/concept/agent#export)
+
 ## Updating the Webhook from DialogflowCX console
 
 You can use [ngrok](https://ngrok.com/docs) or [localtunnel](https://github.com/localtunnel/localtunnel) to expose the webhook to the internet. After exporting the port `9000` you can update the webhook in the DialogflowCX console.
