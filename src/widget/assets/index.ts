@@ -77,11 +77,8 @@ chatFrameTemplate.innerHTML = `
         </button>
 
       </section>
-
     </section>
   </section>
-
-
   `;
 
 
@@ -96,23 +93,16 @@ chatHeaderTemplate.innerHTML = `
   </style>
 
   <section class="chat-header-container">
-
-
-    <div class="back-button">
-    ${backIcon}
-    </div>
     <div class="logo"></div>
 
     <h3>Virtual Chat</h3>
 
     <div class="spacer"></div>
 
-
     <div class="collapse-arrow" >
     ${collapseArrow}
     </div>
   </section>
-
   `;
 
 export const chatLoaderTemplate = document.createElement('template');
