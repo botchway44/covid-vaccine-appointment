@@ -41,10 +41,7 @@ export class MailerService{
             subject: `Hey, here's your PIN`,
             template: "email_confirmation",
             context: mailData,
-        };
-        
-        // html: `<b>Hey there!</b> 👋🏾 <br><br> This is Nana Adwoa,You here is a confirmation code <b> ${code} </b>to verify your email to set an appointment to book your covid vaccine shot.  <br><br> Best regards. <br>Nana Adwoa`
-       
+        };       
 
         this.mailTransporter.sendMail(mailOptions, (error: any, info: any) => {
             console.log("Sending Emails:::");
@@ -63,10 +60,7 @@ export class MailerService{
             subject: 'Appointment Details',
             template: "appointment_details",
             context: mailData,
-        };
-        
-        // html: `<b>Hey there!</b> 👋🏾 <br><br> This is Nana Adwoa,You here is a confirmation code <b> ${code} </b>to verify your email to set an appointment to book your covid vaccine shot.  <br><br> Best regards. <br>Nana Adwoa`
-       
+        };       
 
       this.mailTransporter.sendMail(mailOptions, (error: any, info: any) => {
           console.log("Sending Emails:::");
