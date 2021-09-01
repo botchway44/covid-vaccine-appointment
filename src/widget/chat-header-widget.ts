@@ -22,10 +22,7 @@ export class ChatHeaderWidgetElement extends HTMLElement {
     this.shadowRoot.appendChild(chatHeaderTemplate.content.cloneNode(true));
 
     // find the collapse arrow
-    // .collapse-arrow
     this.chatCollapseButton = this.shadowRoot.querySelector('.collapse-arrow');
-
-
   }
 
   connectedCallback() {

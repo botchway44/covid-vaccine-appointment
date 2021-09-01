@@ -23,6 +23,7 @@ server.use(express.static(path.join(__dirname, "../../.")));
 let mongoClient: MongoClientConnection;
 let dialog: Dialog;
 let mailService : MailerService;
+let botApiServiceCx  = new BotApiServiceCx();
 
 
 server.post('/api/messages', async (req :any , res : any) => {
@@ -166,9 +167,9 @@ server.post('/channels/web', async (req: any, res: any) => {
 
   try {
       if (body.sessionId) {
-          responseMessages = await BotApiServiceCx.detectIntentText(body);
+          responseMessages = await botApiServiceCx.detectIntentText(body);
       } else {
-          responseMessages = await BotApiServiceCx.detectIntentText(body);
+          responseMessages = await botApiServiceCx.detectIntentText(body);
       }
 
   } catch (error) {

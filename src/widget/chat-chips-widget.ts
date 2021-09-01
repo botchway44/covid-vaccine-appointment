@@ -20,10 +20,6 @@ export class ChatChipsWidgetElement extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(chatChipsTemplate.content.cloneNode(true));
 
-
-    // this.message = JSON.parse(this.getAttribute("data"));
-    this.chat = JSON.parse(this.getAttribute("message"));
-
     // get the message element and append message
     this.chipsContainer = this.shadowRoot.querySelector(".chat-widget-chip-container");
   }
@@ -41,7 +37,6 @@ export class ChatChipsWidgetElement extends HTMLElement {
     }
 
     // Add Listeners if there are any
-    // this.message = JSON.parse(this.getAttribute("data"));
     this.chat = JSON.parse(this.getAttribute("chat"));
     // this.chipsContainer.textContent = this.chat.text;
 
@@ -88,8 +83,6 @@ export class ChatChipsWidgetElement extends HTMLElement {
     if (!this.hasAttribute(name)) {
       newValue = null;
     }
-
-    console.log(newValue);
 
   }
 

@@ -37,9 +37,7 @@ export class ChatImageWidgetElement extends HTMLElement {
     }
 
     // Add Listeners if there are any
-    // this.message = JSON.parse(this.getAttribute("data"));
     this.chat = JSON.parse(this.getAttribute("chat"));
-    // this.imagesContainer.textContent = this.chat.text;
 
     // create spans and add to chips frame
     const chips = this.chat.payload as IMedia[];

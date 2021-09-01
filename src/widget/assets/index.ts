@@ -1,7 +1,5 @@
 /// <reference path="imports.d.ts"/>
-import sendButton from './send-button.svg';
 import mapIcon from './google-maps.svg';
-import backIcon from './back.svg';
 import collapseArrow from './collapse-arrows.svg';
 // import messageIcon from './message.svg';
 // EXPORT MAP ICON TO BE USED IN THE LIST PAGE
@@ -11,15 +9,12 @@ import globalStyles from './styles.scss';
 import chatWidgetCSS from './chat-widget.scss';
 import threeDotsCSS from './three-dots.scss';
 import chatHeaderWidgetCSS from './chat-header-widget.scss';
-import chatLoaderWidgetCSS from './chat-loader-widget.scss';
 import chatUserWidgetCSS from './chat-user-widget.scss';
 import chatBotWidgetCSS from './chat-bot-widget.scss';
 import chatInputWidgetCSS from './chat-input-widget.scss';
 import chatChipsWidgetCSS from './chat-chips-widget.scss';
 import chatListWidgetCSS from './chat-list-widget.scss';
-import chatRichChipsWidgetCSS from './chat-rich-chips-widget.scss';
 import chatImageWidgetCSS from './chat-image-widget.scss';
-import chatLocationPickerWidgetCSS from './chat-location-picker-widget.scss';
 import chatMenuChipsWidgetCSS from './chat-menu-chips-widget.scss';
 import chatMenuListWidgetCSS from './chat-menu-list-widget.scss';
 
@@ -103,26 +98,6 @@ chatHeaderTemplate.innerHTML = `
     ${collapseArrow}
     </div>
   </section>
-  `;
-
-export const chatLoaderTemplate = document.createElement('template');
-chatLoaderTemplate.innerHTML = `
-
-  <style>
-  ${globalStyles}
-  </style>
-  <style>
-  ${chatLoaderWidgetCSS}
-  </style>
-
-  <main class="loader">
-      <div class="item-1"></div>
-      <div class="item-2"></div>
-      <div class="item-3"></div>
-      <div class="item-4"></div>
-      <div class="item-5"></div>
-  </main>
-
   `;
 
 
@@ -245,24 +220,7 @@ chatChipsTemplate.innerHTML = `
 
   </section>
   `;
-
-export const chatRichChipsTemplate = document.createElement('template');
-chatRichChipsTemplate.innerHTML = `
-
-  <style>
-  ${globalStyles}
-  </style>
-  <style>
-  ${chatRichChipsWidgetCSS}
-  </style>
-
-  <section class="chat-widget-chip-container">
-
-  
-  </section>
-
-  `;
-
+ 
 export const chatImageTemplate = document.createElement('template');
 chatImageTemplate.innerHTML = `
 
@@ -279,36 +237,6 @@ chatImageTemplate.innerHTML = `
 
   `;
 
-export const chatLocationPickerTemplate = document.createElement('template');
-chatLocationPickerTemplate.innerHTML = `
-
-  <style>
-  ${globalStyles}
-  </style>
-  <style>
-  ${chatLocationPickerWidgetCSS}
-  </style>
-
-  <section class="chat-widget-location-picker-container popup-chat">
-
-  
-    <input id="pac-input" type="text" placeholder="Enter a search location" />
-
-  <div id="map"></div>
-  <div id="infowindow-content">
-  <span id="place-name" class="title"></span><br />
-  <span id="place-address"></span>
-  </div>
-
-
-    <section class="chat-widget-location-picker-chips">
-        <div id='current-location'>Use Current Location</div>
-        <div id="selected-location">Use Selected Location</div>
-    </section>
-
-  </section>
-
-  `;
 
 export const chatListTemplate = document.createElement('template');
 chatListTemplate.innerHTML = `

@@ -51,9 +51,6 @@ export class ChatWidgetElement extends HTMLElement {
   protected chatSuggesstionElement: HTMLElement;
 
 
-  // <script src="https://cdn.jsdelivr.net/npm/@googlemaps/js-api-loader@1.12.1/dist/index.umd.min.js"></script>
-
-
   /**
    * Returns attributes to be used 
    */
@@ -66,10 +63,6 @@ export class ChatWidgetElement extends HTMLElement {
   constructor() {
     super();
 
-    // Load Javascript 
-    const mapsScript = document.createElement('script');
-    mapsScript.src = 'https://cdn.jsdelivr.net/npm/@googlemaps/js-api-loader@1.12.1/dist/index.umd.min.js';
-    document.head.appendChild(mapsScript);
     // create sessionId to manange chats
     this.sessionId = Math.random().toString(36).substring(7);
 
@@ -129,12 +122,12 @@ export class ChatWidgetElement extends HTMLElement {
     this.chatToggleButton.addEventListener("click", this.toggleChatViewState)
 
     // init chat
+    //@ts-ignore
     window.addEventListener("queryEntered", (event: CustomEvent) => {
 
       const message = event.detail.message;
       const chat = new Chat(message, this.sessionId, "USER");
 
-      console.log(message)
       this.addChat(chat);
 
 
@@ -165,6 +158,7 @@ export class ChatWidgetElement extends HTMLElement {
 
     // Listen to chip selected
     // TODO: PULL ALL EVENT NAMES INTO TYPES FOR EASY REFERNCE
+    //@ts-ignore
     window.addEventListener("chipSelected", (event: CustomEvent) => {
       // retrieve custom data
       const message = event.detail.message;
@@ -189,6 +183,7 @@ export class ChatWidgetElement extends HTMLElement {
     });
 
     // Listen to chip selected
+    //@ts-ignore
     window.addEventListener("locationSelected", (event: CustomEvent) => {
       // retrieve custom data
       const message = event.detail as LOCATION_REQUEST;
@@ -206,6 +201,7 @@ export class ChatWidgetElement extends HTMLElement {
       this.scrollToView()
 
       // set the chat message to the intent request and validate
+      
       this.intentRequest.query = message;
       this.intentRequest.requestType = "LOCATION";
 
@@ -214,6 +210,7 @@ export class ChatWidgetElement extends HTMLElement {
 
 
     // Listen to locationPickerError
+    //@ts-ignore
     window.addEventListener("locationPickerError", (event: CustomEvent) => {
       // retrieve custom data
       const message = event.detail.message;
@@ -232,28 +229,21 @@ export class ChatWidgetElement extends HTMLElement {
         // open
         this.showChatFrame();
 
-        // set message to hello for the first time
-        //TODO : Remove, chat is initialized once the page is loaded
-        // this.intentRequest.query = "hello";
-        // this.intentRequest.requestType = "TEXT";
-
-        // this.verifyIntents(this.intentRequest)
       } else {
         // just open
         this.showChatFrame();
       }
 
       this.chatSuggesstionDirty = true;
-      // call hello querry but dont add to the chat frame
 
     });
 
 
     // Listen to chip selected
+    //@ts-ignore
     window.addEventListener("chatLoaderToggled", (event: CustomEvent) => {
       // retrieve custom data
       const message = event.detail as { state: boolean };
-      // const id = event.detail.id;
       if (message.state) {
         this.showChatLoader();
       } else {
@@ -341,20 +331,9 @@ export class ChatWidgetElement extends HTMLElement {
       element.setAttribute("chat", JSON.stringify(chat))
 
       this.chatListFrame.appendChild(element);
-    } else if (chat.messageType === "RICHCHIPS") {
-      const element = document.createElement("chat-rich-chips-widget");
-      element.setAttribute("chat", JSON.stringify(chat))
-
-      this.chatListFrame.appendChild(element);
-    }
+    } 
     else if (chat.messageType === "IMAGE") {
       const element = document.createElement("chat-image-widget");
-      element.setAttribute("chat", JSON.stringify(chat))
-
-      this.chatListFrame.appendChild(element);
-    }
-    else if (chat.messageType === "LOCATION_PICKER_ATM" || chat.messageType === "LOCATION_PICKER_BRANCH") {
-      const element = document.createElement("chat-location-picker-widget");
       element.setAttribute("chat", JSON.stringify(chat))
 
       this.chatListFrame.appendChild(element);
@@ -365,12 +344,6 @@ export class ChatWidgetElement extends HTMLElement {
   
       this.chatListFrame.appendChild(element);
     } 
-    else if (chat.messageType === "MENU_LIST") {
-      // <chat-list-widget></chat-list-widget>
-      const element = document.createElement("chat-menu-list-widget");
-      element.setAttribute("chat", JSON.stringify(chat))
-      this.chatListFrame.appendChild(element);
-    }
     else if (chat.messageType === "LIST") {
       // <chat-list-widget></chat-list-widget>
       const element = document.createElement("chat-list-widget");
@@ -386,9 +359,6 @@ export class ChatWidgetElement extends HTMLElement {
     if (!this.hasAttribute(name)) {
       newValue = null;
     }
-
-    console.log(newValue);
-
   }
 
 
@@ -474,7 +444,6 @@ export class ChatWidgetElement extends HTMLElement {
 
     }
     catch (e) {
-      console.log(e);
       this.hideChatLoader();
       this.addChat(new Chat("I had a problem getting results, please try again", this.sessionId, "BOT"));
     }
