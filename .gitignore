@@ -7,3 +7,4 @@ dist
 server
 .env
 fake
+keys.txt
