@@ -11,7 +11,10 @@ A conversational bot(Nana Adwoa) allowing users to book days with available slot
 
 Check out our website for a live [demo](https://dfcx-vaccine-appointment.herokuapp.com/)
 
-https://user-images.githubusercontent.com/16451643/131252255-a93dfec5-c735-4008-a2e1-dc6d993b1e7e.mp4
+
+
+https://user-images.githubusercontent.com/16451643/131744284-d95036cc-ea61-4f0f-83fb-979674716d28.mp4
+
 
 ## 💡 Motivation and Context
 
