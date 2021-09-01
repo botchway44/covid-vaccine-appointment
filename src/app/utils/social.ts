@@ -221,13 +221,15 @@ export class Social {
             }
         }
         
-           return {
+        return {
+                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/87ca4145-db09-4276-bafb-939a28597339",
+
                    fulfillment_response: { 
                     messages: [
                         {
                             text: {
                                 //fulfillment text response to be sent to the agent
-                                text: ["Verification failed. Please try again"]
+                                text: ["Verification failed. Please check your email for the right code or press try again to resend code."]
                             }
                         }
                 ] 
@@ -245,7 +247,8 @@ export class Social {
                              ]
                              },
                         sessionInfo: {
-                            parameters: {                         
+                            parameters: {
+                                code:null,
                                 ...req.body.sessionInfo.parameters,
                                 verified : "false"
                             }
