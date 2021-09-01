@@ -8,20 +8,14 @@ const {struct} = require('pb-util');
 
 export class BotApiServiceCx {
 
+    client: SessionsClient;
     constructor() {
         /**
         * Example for regional endpoint:
         *   const location = 'us-central1'
         *   const client = new SessionsClient({apiEndpoint: 'us-central1-dialogflow.googleapis.com'})
         */
-
-    }
-
-
-    static async detectIntentText(intentRequest: any) {
-        // const sessionId =  Math.random().toString(36).substring(7);
-
-        const client = new SessionsClient({
+        this.client = new SessionsClient({
             apiEndpoint: 'us-central1-dialogflow.googleapis.com',
             projectId : process.env.DF_PROJECT_ID,
             credentials : {
@@ -30,25 +24,28 @@ export class BotApiServiceCx {
             },
             language: "en"
         });
+    }
 
-        const sessionPath = client.projectLocationAgentSessionPath(
+
+ async detectIntentText(intentRequest: any) {
+        // const sessionId =  Math.random().toString(36).substring(7);
+
+
+
+        const sessionPath = this.client.projectLocationAgentSessionPath(
             intentRequest.projectId,
             intentRequest.location,
             intentRequest.agentId,
             intentRequest.sessionId
         );
 
-        // console.info("session path ", sessionPath);
-
-        const langCode = intentRequest.languageCode;
-        // console.log(langCode)
         const request = {
             session: sessionPath,
             queryInput: {
                 text: {
                     text: intentRequest?.query,
                 },
-                languageCode: intentRequest?.languageCode
+                languageCode: intentRequest?.languageCode || 'en',
             },
             queryParams:{
                 parameters:struct.encode({
@@ -57,10 +54,7 @@ export class BotApiServiceCx {
             }
         };
 
-        // console.log("Session Response ", request);
-
-        const [response] = await client.detectIntent(request);
-        // console.log("Query Response ", JSON.stringify(response));
+        const [response] = await this.client.detectIntent(request);
 
         console.log(`User Query: ${intentRequest?.query}`);
         if(response?.queryResult?.responseMessages){

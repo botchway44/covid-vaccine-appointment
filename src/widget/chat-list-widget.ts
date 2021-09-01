@@ -20,10 +20,6 @@ export class ChatListWidgetElement extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(chatListTemplate.content.cloneNode(true));
 
-
-    // this.message = JSON.parse(this.getAttribute("data"));
-    // this.chat = JSON.parse(this.getAttribute("message"));
-
     // get the message element and append message
     this.chipsContainer = this.shadowRoot.querySelector(".chat-widget-list-container");
   }
@@ -121,8 +117,6 @@ export class ChatListWidgetElement extends HTMLElement {
     if (!this.hasAttribute(name)) {
       newValue = null;
     }
-
-    console.log(newValue);
 
   }
 

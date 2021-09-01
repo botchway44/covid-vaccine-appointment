@@ -54,9 +54,6 @@ export class ChatInputWidgetElement extends HTMLElement {
     if (!this.hasAttribute(name)) {
       newValue = null;
     }
-
-    console.log(newValue);
-
   }
 
   protected _handleEnterKeyPressed(_event: any) {

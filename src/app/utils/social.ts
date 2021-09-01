@@ -239,7 +239,7 @@ export class Social {
                                     displayName: 'code',
                                     required: true,
                                     state: 'EMPTY',
-                                    value: req.body.sessionInfo.parameters.code,
+                                    value: null,
                                     justCollected: true
                                   },
                              ]

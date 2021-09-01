@@ -24,8 +24,6 @@ export class ChatUserWidgetElement extends HTMLElement {
 
     // get the message element and append message
     this.messageContainer = this.shadowRoot.querySelector("p");
-    // append animation to chat
-    // this.shadowRoot.querySelector(".chat-bot-message-container").classList.add("popup-chat");
 
   }
 
@@ -43,7 +41,6 @@ export class ChatUserWidgetElement extends HTMLElement {
 
 
     // Add Listeners if there are any
-    // this.message = JSON.parse(this.getAttribute("data"));
     this.chat = JSON.parse(this.getAttribute("chat"));
     this.messageContainer.innerHTML = this.chat.text;
 

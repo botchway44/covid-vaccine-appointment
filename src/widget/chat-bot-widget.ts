@@ -20,10 +20,6 @@ export class ChatBotWidgetElement extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(chatBotTemplate.content.cloneNode(true));
 
-
-    // this.message = JSON.parse(this.getAttribute("data"));
-    this.chat = JSON.parse(this.getAttribute("message"));
-
     // get the message element and append message
     this.messageContainer = this.shadowRoot.querySelector("p");
   }
@@ -41,7 +37,6 @@ export class ChatBotWidgetElement extends HTMLElement {
     }
 
     // Add Listeners if there are any
-    // this.message = JSON.parse(this.getAttribute("data"));
     this.chat = JSON.parse(this.getAttribute("chat"));
     this.messageContainer.innerHTML = this.chat.text;
 
@@ -51,9 +46,6 @@ export class ChatBotWidgetElement extends HTMLElement {
     if (!this.hasAttribute(name)) {
       newValue = null;
     }
-
-    console.log(newValue);
-
   }
 
   protected setOrRemoveAttribute(name: string, value: string) {
