@@ -64,7 +64,6 @@ Dialogflow CX Competition -->
 
 - Bot conversation video created with [Synthesia](https://www.synthesia.io/request-demo)
 - Email templates design created with [Designmodo](https://designmodo.com/postcards/)
-- Chat loader animation from [Three Dots](https://github.com/nzbin/three-dots)
 
 ## License
 
