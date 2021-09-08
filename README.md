@@ -2,6 +2,18 @@
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
+<<<<<<< HEAD
+=======
+
+## 📙 Description
+
+A conversational bot(Nana Adwoa) allowing users to book days with available slots to take covid vaccine.
+
+## Demo
+
+Check out our website for a live [demo](https://dfcx-vaccine-appointment.herokuapp.com/)
+
+>>>>>>> 4ae2622cff5a0b32e9c5ec6758b157d04bacbc24
 
 ## 📙 Description
 
@@ -15,6 +27,14 @@ https://user-images.githubusercontent.com/16451643/131252255-a93dfec5-c735-4008-
 
 ## 💡 Motivation and Context
 
+<<<<<<< HEAD
+=======
+https://user-images.githubusercontent.com/16451643/131744284-d95036cc-ea61-4f0f-83fb-979674716d28.mp4
+
+
+## 💡 Motivation and Context
+
+>>>>>>> 4ae2622cff5a0b32e9c5ec6758b157d04bacbc24
 <!--- Describe your app in one or two sentences -->
 
 COVID-19 infections are increasing in Ghana, with 420 new infections reported on average each day. That's 54% of the peak — the highest daily average reported on July 28. During the last week reported, Ghana averaged about 719 doses administered each day. At that rate, it will take a further 8,460 days to administer enough doses for another 10% of the population. [Source](https://graphics.reuters.com/world-coronavirus-tracker-and-maps/countries-and-territories/ghana/)
@@ -61,7 +81,6 @@ Dialogflow CX Competition -->
 
 - Bot conversation video created with [Synthesia](https://www.synthesia.io/request-demo)
 - Email templates design created with [Designmodo](https://designmodo.com/postcards/)
-- Chat loader animation from [Three Dots](https://github.com/nzbin/three-dots)
 
 ## License
 

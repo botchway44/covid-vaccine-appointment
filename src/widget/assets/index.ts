@@ -46,7 +46,7 @@ chatFrameTemplate.innerHTML = `
             
           </div>
 
-          <div style="margin-left:20px;" class="chat-loading dot-pulse"></div>
+          <div style="margin-left:20px;" class="chat-loading lds-ellipsis"><div></div><div></div><div></div><div></div></div>
           <div  class="trick-to-scroll-here"></div>
 
         </section>
