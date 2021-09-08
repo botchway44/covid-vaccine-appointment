@@ -2,11 +2,6 @@
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> master
 
 ## 📙 Description
 
@@ -15,11 +10,6 @@ A conversational bot(Nana Adwoa) allowing users to book days with available slot
 ## Demo
 
 Check out our website for a live [demo](https://dfcx-vaccine-appointment.herokuapp.com/)
-
-<<<<<<< HEAD
->>>>>>> 4ae2622cff5a0b32e9c5ec6758b157d04bacbc24
-=======
->>>>>>> master
 
 ## 📙 Description
 
