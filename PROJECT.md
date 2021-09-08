@@ -89,10 +89,12 @@ Replace the agent id and webhook url in the chat component.
 >
 </dialogflowcx-chat-widget>
 
-<!-- NOTE 
-if you want to attach the widget on a custom site, 
+<!-- FYI 
+1. if you want to attach the widget on a custom site, 
 replace the agent-url with the domain of the server 
 you hosted the project on then append /channels/web 
+
+2. Make sure to use us-central1 for the project location
 -->
 ```
 
