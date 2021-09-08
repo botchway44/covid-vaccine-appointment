@@ -33,6 +33,7 @@ To run this project locally, you need to create a service account for the agent
 
 | Key               | Description                                                                                                                 |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| AGENT_ID          | The agent id of the project. Instructions below in getting the agent id                                                     |
 | DF_PROJECT_ID     | The project id in the service json file                                                                                     |
 | DF_PRIVATE_KEY    | The peivate key in the service json file                                                                                    |
 | DF_PRIVATE_KEY_ID | The private key id in the service json file                                                                                 |

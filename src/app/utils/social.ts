@@ -75,7 +75,7 @@ export class Social {
 
         if (!verified) {
             return {
-                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/cb212e63-9808-4446-96ba-438c54058797",
+                target_page: `projects/${process.env.DF_PROJECT_ID}/locations/us-central1/agents/${process.env.AGENT_ID}/flows/00000000-0000-0000-0000-000000000000/pages/cb212e63-9808-4446-96ba-438c54058797`,
        
                 sessionInfo: {
                     parameters: {
@@ -195,7 +195,7 @@ export class Social {
            if(verified){
             // send verified payload
             return {
-                target_page: "projects/stanbic-assistant/locations/us-central1/agents/4883adeb-8d80-4383-8c3f-db6308741731/flows/00000000-0000-0000-0000-000000000000/pages/188f9011-8a45-43ae-9c94-09c088632d6b",
+                target_page: `projects/${process.env.DF_PROJECT_ID}/locations/us-central1/agents/${process.env.AGENT_ID}/flows/00000000-0000-0000-0000-000000000000/pages/188f9011-8a45-43ae-9c94-09c088632d6b`,
                 pageInfo:{
                         formInfo : { 
                             parameterInfo :  [
