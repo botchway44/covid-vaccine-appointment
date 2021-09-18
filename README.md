@@ -11,16 +11,6 @@ A conversational bot(Nana Adwoa) allowing users to book days with available slot
 
 Check out our website for a live [demo](https://dfcx-vaccine-appointment.herokuapp.com/)
 
-## 📙 Description
-
-A conversational bot(Nana Adwoa) allowing users to book days with available slots to take covid vaccine.
-
-## Demo
-
-Check out our website for a live [demo](https://dfcx-vaccine-appointment.herokuapp.com/)
-
-https://user-images.githubusercontent.com/16451643/131252255-a93dfec5-c735-4008-a2e1-dc6d993b1e7e.mp4
-
 
 ## 💡 Motivation and Context
  
@@ -64,7 +54,7 @@ Dialogflow CX Competition -->
 
 - Dialogflow CX
 - Nodejs with Typescript
-- Mongodb
+- MongoDB
 
 ## Credits
 
