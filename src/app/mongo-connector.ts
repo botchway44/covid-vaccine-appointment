@@ -13,10 +13,13 @@ require("dotenv").config();
 export class MongoClientConnection {
     public sessions_db_name = 'sessions';
     public appointments_db_name = 'appointments';
+    public chats_db_name = 'chats';
+
     public db_name = 'appointment';
 
     appointments_collection?: Collection | undefined;
     sessions_collection?:Collection | undefined;
+    chats_collection?: Collection | undefined;
 
     mongo_url = process.env.MONGODB_URL;
 
@@ -39,6 +42,7 @@ export class MongoClientConnection {
                 console.log('connecting...');
                 this.appointments_collection = await client.db(this.db_name).collection(this.appointments_db_name);
                 this.sessions_collection = await client.db(this.db_name).collection(this.sessions_db_name);
+                this.chats_collection = await client.db(this.db_name).collection(this.chats_db_name);
 
                 resolve(true)
             });
@@ -48,6 +52,13 @@ export class MongoClientConnection {
 
     }
 
+    async addChat(chat: any) {
+        return await this.chats_collection?.insertOne(chat);
+    }
+
+    async addBulkChat(chats: any[]) {
+        return await this.chats_collection?.insertMany(chats);
+    }
     async addAppointment(appointment: IAppointment) {
         return await this.appointments_collection?.insertOne(appointment);
     }

@@ -161,7 +161,9 @@ server.post('/api/messages', async (req :any , res : any) => {
  */
 server.post('/channels/web', async (req: any, res: any) => {
 
-  const body = req.body as IntentRequest;
+    const body = req.body as IntentRequest;
+    // add incomming chat message to mongo chats
+    mongoClient.addChat(body);
 
   let responseMessages;
 
@@ -173,10 +175,12 @@ server.post('/channels/web', async (req: any, res: any) => {
       }
 
   } catch (error) {
-
+    //TODO: log error with morgan & push to sentry
   }
 
-  res.status(200).json(parseChat(responseMessages?.queryResult?.responseMessages));
+    const response = parseChat(responseMessages?.queryResult?.responseMessages);
+    mongoClient.addBulkChat(response);
+    res.status(200).json(response);
 });
 
 
